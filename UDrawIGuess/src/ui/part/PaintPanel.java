@@ -1,6 +1,6 @@
 package ui.part;
 
-import DrawAndGuess.DrawAndGuess;
+import ui.mergeFace.DGMainFrame;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -35,10 +35,10 @@ public class PaintPanel extends JPanel implements ActionListener    //画图板的类
     public int id;   //记录用户ID，以便画出来
     
     DatagramSocket ds;
-    DrawAndGuess tc;
+    DGMainFrame tc;
   
     
-	public PaintPanel(DrawAndGuess tc)
+	public PaintPanel(DGMainFrame tc)
 	{
 		this.tc = tc;
 		

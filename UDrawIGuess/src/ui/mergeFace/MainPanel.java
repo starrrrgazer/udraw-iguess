@@ -1,14 +1,8 @@
 package ui.mergeFace;
 
-import DrawAndGuess.DrawAndGuess;
 import ui.part.PaintPanel;
 
 import java.awt.*;
-import java.sql.*;
-import java.awt.event.*;
-import java.io.Serializable;
-import java.util.List;
-import java.util.*;
 
 import javax.swing.*;
 
@@ -24,12 +18,12 @@ public class MainPanel extends JPanel  //中间主面板的类
     private JTextField t1,t2;  //左面计分板的文本框
     private JTextArea t4;  //答案的文本框
     public JButton tb,tb1,tb3;
-    DrawAndGuess tc;
+    DGMainFrame tc;
     private JPopupMenu popup;
     
     public PaintPanel pp = new PaintPanel(tc);
     
-    public MainPanel(DrawAndGuess tc)
+    public MainPanel(DGMainFrame tc)
     {
     	this.tc = tc;
     	launch();

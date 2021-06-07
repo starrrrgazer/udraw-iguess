@@ -1,6 +1,6 @@
 package ui.part;
 
-import DrawAndGuess.DrawAndGuess;
+import ui.mergeFace.DGMainFrame;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -13,7 +13,7 @@ import java.net.SocketException;
 
 public class PointNewMsg implements AllMsg
 {
-	DrawAndGuess tc;
+	DGMainFrame tc;
 	
 	int id;
 	Point point;
@@ -28,7 +28,7 @@ public class PointNewMsg implements AllMsg
 		this.cancel = cancel;
 	}
 	
-	public PointNewMsg(DrawAndGuess tc)
+	public PointNewMsg(DGMainFrame tc)
 	{
 		this.tc = tc;
 	}

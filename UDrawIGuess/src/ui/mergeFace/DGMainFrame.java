@@ -1,5 +1,6 @@
-package DrawAndGuess;
-import ui.mergeFace.MainPanel;
+package ui.mergeFace;
+
+import DrawAndGuess.launch;
 
 import java.awt.*;
 
@@ -7,13 +8,13 @@ import javax.swing.*;
 
 import java.awt.event.*;
 
-public class DrawAndGuess extends JFrame
+public class DGMainFrame extends JFrame
 {
 int set = 0;
 	//面版的变量
 	private  String TheCorrectAnswer = "";
 	private String nowAnswer = "";
-	public static DrawAndGuess client = launch.client;
+	public static DGMainFrame client = launch.client;
 	
 	int i = 0;
 	int iii = 11;
@@ -35,7 +36,7 @@ int set = 0;
 	public MainPanel mp = new MainPanel(this);
 	Font f1 = new Font("宋体",Font.PLAIN,12);
 	
-    public DrawAndGuess()  //构造方法
+    public DGMainFrame()  //构造方法
 	{
 		
 	}
