@@ -60,13 +60,13 @@ public class PaintPanel extends JPanel implements ActionListener    //画图板的类
     	jb4.setBounds(434, 7, 61, 29);
     	
     	WriterListener wl = new WriterListener();
-    	jb5 = new JButton(new ImageIcon("G:\\java\\13.jpg"));  //最粗的线
+    	jb5 = new JButton("4");  //最粗的线
     	jb5.addActionListener(wl);
-    	jb6 = new JButton(new ImageIcon("G:\\java\\14.jpg"));  //第二粗的线
+    	jb6 = new JButton("3");  //第二粗的线
     	jb6.addActionListener(wl);
-    	jb7 = new JButton(new ImageIcon("G:\\java\\15.jpg"));  //第三粗的线
+    	jb7 = new JButton("2");  //第三粗的线
     	jb7.addActionListener(wl);
-    	jb8 = new JButton(new ImageIcon("G:\\java\\16.jpg"));  //最细的线
+    	jb8 = new JButton("1");  //最细的线
     	jb8.addActionListener(wl);
     	jb5.setBounds(325, 47, 52, 29);
     	jb6.setBounds(380, 47, 52, 29);
@@ -86,8 +86,8 @@ public class PaintPanel extends JPanel implements ActionListener    //画图板的类
 		jl3.setForeground(Color.BLUE);
     	jl3.setBounds(7, 7, 77, 29);
 		
-    	jb2 = new JButton(new ImageIcon("G:\\java\\12.jpg"));  //铅笔按钮
-    	jb3 = new JButton(new ImageIcon("G:\\java\\11.jpg"));  //橡皮按钮
+    	jb2 = new JButton("笔");  //铅笔按钮
+    	jb3 = new JButton("皮");  //橡皮按钮
     	ChangeListener cl3 = new ChangeListener();
     	jb2.addActionListener(cl3);
     	jb3.addActionListener(cl3);
