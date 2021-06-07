@@ -147,7 +147,7 @@ public class PaintPanel extends JPanel implements ActionListener    //画图板的类
     	 //下面是画板和工具栏面版的总面版pp
     	setLayout(null);
     	setBackground(Color.WHITE);
-    	setBounds(77, 70, 560, 599);
+    	setBounds(0, 0, 600, 500);
     	add(jp);
     	PaintListener l = new PaintListener();  //画版的监听器
     	addMouseListener(l);  //将监听器添加到画板中
