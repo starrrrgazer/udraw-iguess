@@ -14,7 +14,7 @@ int set = 0;
 	//面版的变量
 	private  String TheCorrectAnswer = "";
 	private String nowAnswer = "";
-	public static DrawAndGuess client;
+	public static DrawAndGuess client = launch.client;
 	
 	int i = 0;
 	int iii = 11;
@@ -122,11 +122,7 @@ int set = 0;
 	    
 	}
 	
-	public static void main(String[] args)   //main方法
-    {
-		client = new DrawAndGuess();
-		client.launchFrame();
-	}
+
 	
 	private class TFListener implements ActionListener  //定义一个监听器，当按Enter键时，清空写字板和缓存区
 	{
