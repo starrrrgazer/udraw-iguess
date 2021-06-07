@@ -1,6 +1,8 @@
 package ui.part;
 
 
+import Manager.FontManager;
+import Manager.ImageManager;
 import ui.mergeFace.MainFrame;
 
 import java.awt.*;
@@ -13,145 +15,160 @@ import javax.swing.*;
 
 public class PaintPanel extends JPanel implements ActionListener    //»­Í¼°åµÄÀà
 {
+
+	private ImageManager imageManager = ImageManager.getDefaultImageManager();
+
 	//»­°åÉÏµÄ±äÁ¿
+	public static final int WIDTH = 600;
+	public static final int HEIGHT = 500;
+
+
 	List<Point> list = new ArrayList<Point>();  //ÉùÃ÷Ò»¸öList£¬´æµã
     Point p1,p2;
     int x1,y1,x2,y2;
-    int flag = 1;//ÅÐ¶Ïµ±Ç°ËùÓÃµÄ¹¤¾ß,Ä¬ÈÏÎªÇ¦±Ê
+    int chooseTool = 1;//ÅÐ¶Ïµ±Ç°ËùÓÃµÄ¹¤¾ß,Ä¬ÈÏÎªÇ¦±Ê
 
-    Font f1 = new Font("ËÎÌå",Font.PLAIN,14);
-    Font f2 = new Font("ËÎÌå",Font.PLAIN,12);
-    private JButton jb1,jb4;  //Çå¿Õ»­°å,ºÍ³·ÏúÉÏÒ»´Î»­µÄÍ¼°¸µÄ°´Å¥
-    private JPanel jp;   //»­°åÏÂÃæµÄ¹¤¾ßÀ¸µÄÃæ°æ
-    private JButton jb2,jb3;  //ÏðÆ¤ºÍ»­±ÊµÄÑ¡Ôñ°´Å¥
-    private JButton jb5,jb6,jb7,jb8;  //ÉèÖÃËÄ¸ö»­±Ê´ÖÏ¸µÄ°´Å¥
-    private JLabel jl1,jl2,jl3,jl4;  //ÉèÖÃÌáÊ¾²Ù×÷µÄ±êÇ©
-    private JButton cjb1,cjb2,cjb3,cjb4,cjb5,cjb6,cjb7;  //Ñ¡ÔñÑÕÉ«µÄ°´Å¥
+    private JButton jButtonClear, jButtonCancel;  //Çå¿Õ»­°å,ºÍ³·ÏúÉÏÒ»´Î»­µÄÍ¼°¸µÄ°´Å¥
+    private JPanel jPanelTools;   //»­°åÏÂÃæµÄ¹¤¾ßÀ¸µÄÃæ°æ
+    private JButton jButtonEraser,jButtonBrush;  //ÏðÆ¤ºÍ»­±ÊµÄÑ¡Ôñ°´Å¥
+    private JButton jButtonBrush1,jButtonBrush2,jButtonBrush3,jButtonBrush4;  //ÉèÖÃËÄ¸ö»­±Ê´ÖÏ¸µÄ°´Å¥
+    private JLabel jLabelTool,jLabelBrush, jLabelColor;  //ÉèÖÃÌáÊ¾²Ù×÷µÄ±êÇ©
+	//Ñ¡ÔñÑÕÉ«µÄ°´Å¥
+    private JButton jButtonColor1, jButtonColor2, jButtonColor3, jButtonColor4, jButtonColor5, jButtonColor6, jButtonColor7;
 
-    private Color c;
-    int co = 1;
+	//ÉèÖÃ×ÖÌå
+    private Font paintLabelFont = FontManager.getDefaultFontManager().getPaintLabelFont();
+
+    private Color color;
+    int chooseColor = 1;//Ä¬ÈÏºÚÉ«
     private int n;
     static boolean clear = false;
     static boolean cancel = false;
     public int id;   //¼ÇÂ¼ÓÃ»§ID£¬ÒÔ±ã»­³öÀ´
 
     DatagramSocket ds;
-    MainFrame tc;
+    MainFrame mainFrame;
 
-
-	public PaintPanel(MainFrame tc)
+	public PaintPanel(MainFrame mainFrame)
 	{
-		this.tc = tc;
+		this.mainFrame = mainFrame;
 
 		//ÏÂÃæÊÇ¹¤¾ßÀ¸µÄÃæ°æjp
-    	jb1 = new JButton("Çå¿Õ");
-    	jb1.setFont(f2);
-    	ClearListener cl1 = new ClearListener();
-    	jb1.addActionListener(cl1);
-    	jb1.setBounds(497,7, 60, 29);
-    	CancelListener cl2 = new CancelListener();
-    	jb4 = new JButton("³·Ïû");
-    	jb4.setFont(f2);
-    	jb4.addActionListener(cl2);
-    	jb4.setBounds(434, 7, 61, 29);
+		ImageIcon clearIcon = new ImageIcon(imageManager.getClearImage());
+    	jButtonClear = new JButton(clearIcon);
+    	jButtonClear.setFont(paintLabelFont);
+    	ClearListener clearListener = new ClearListener();
+    	jButtonClear.addActionListener(clearListener);
+    	jButtonClear.setBounds(497,7, 60, 29);
+//    	jButtonClear.setContentAreaFilled(false);
 
-    	WriterListener wl = new WriterListener();
-    	jb5 = new JButton("4");  //×î´ÖµÄÏß
-    	jb5.addActionListener(wl);
-    	jb6 = new JButton("3");  //µÚ¶þ´ÖµÄÏß
-    	jb6.addActionListener(wl);
-    	jb7 = new JButton("2");  //µÚÈý´ÖµÄÏß
-    	jb7.addActionListener(wl);
-    	jb8 = new JButton("1");  //×îÏ¸µÄÏß
-    	jb8.addActionListener(wl);
-    	jb5.setBounds(325, 47, 52, 29);
-    	jb6.setBounds(380, 47, 52, 29);
-    	jb7.setBounds(434, 47, 61, 29);
-    	jb8.setBounds(497,47, 60, 29);
+    	CancelListener cancelListener = new CancelListener();
+		ImageIcon cancelIcon = new ImageIcon(imageManager.getCancelImage());
+    	jButtonCancel = new JButton(cancelIcon);
+    	jButtonCancel.setFont(paintLabelFont);
+    	jButtonCancel.addActionListener(cancelListener);
+    	jButtonCancel.setBounds(434, 7, 61, 29);
+//    	jButtonCancel.setContentAreaFilled(false);
 
-    	jl1 = new JLabel("¹¤¾ß:");
-    	jl1.setFont(f1);
-		jl1.setForeground(Color.BLUE);
-    	jl1.setBounds(270, 7, 52, 29);
-    	jl2 = new JLabel("»­±Ê´ÖÏ¸:");
-    	jl2.setFont(f1);
-		jl2.setForeground(Color.BLUE);
-    	jl2.setBounds(258, 47, 77, 29);
-    	jl3 = new JLabel("»­±ÊÑÕÉ«:");
-    	jl3.setFont(f1);
-		jl3.setForeground(Color.BLUE);
-    	jl3.setBounds(7, 7, 77, 29);
+    	WriterListener writerListener = new WriterListener();
+    	jButtonBrush1 = new JButton("4");  //×î´ÖµÄÏß
+    	jButtonBrush1.addActionListener(writerListener);
+    	jButtonBrush2 = new JButton("3");  //µÚ¶þ´ÖµÄÏß
+    	jButtonBrush2.addActionListener(writerListener);
+    	jButtonBrush3 = new JButton("2");  //µÚÈý´ÖµÄÏß
+    	jButtonBrush3.addActionListener(writerListener);
+    	jButtonBrush4 = new JButton("1");  //×îÏ¸µÄÏß
+    	jButtonBrush4.addActionListener(writerListener);
+    	jButtonBrush1.setBounds(325, 47, 52, 29);
+    	jButtonBrush2.setBounds(380, 47, 52, 29);
+    	jButtonBrush3.setBounds(434, 47, 61, 29);
+    	jButtonBrush4.setBounds(497,47, 60, 29);
 
-    	jb2 = new JButton("±Ê");  //Ç¦±Ê°´Å¥
-    	jb3 = new JButton("Æ¤");  //ÏðÆ¤°´Å¥
-    	ChangeListener cl3 = new ChangeListener();
-    	jb2.addActionListener(cl3);
-    	jb3.addActionListener(cl3);
-    	jb2.setBounds(380, 7, 52, 29);
-    	jb3.setBounds(325, 7, 52, 29);
+    	jLabelTool = new JLabel("¹¤¾ß:");
+    	jLabelTool.setFont(paintLabelFont);
+		jLabelTool.setForeground(Color.BLUE);
+    	jLabelTool.setBounds(270, 7, 52, 29);
+    	jLabelBrush = new JLabel("»­±Ê´ÖÏ¸:");
+    	jLabelBrush.setFont(paintLabelFont);
+		jLabelBrush.setForeground(Color.BLUE);
+    	jLabelBrush.setBounds(258, 47, 77, 29);
+    	jLabelColor = new JLabel("»­±ÊÑÕÉ«:");
+    	jLabelColor.setFont(paintLabelFont);
+		jLabelColor.setForeground(Color.BLUE);
+    	jLabelColor.setBounds(7, 7, 77, 29);
 
-    	ColorListener cler = new ColorListener();  //¶¨ÒåÒ»¸öÑÕÉ«¼àÌýÆ÷
-    	cjb1 = new JButton();
-    	cjb1.setBackground(Color.BLACK);
-    	cjb1.addActionListener(cler);
-    	cjb1.setBounds(70, 7, 52, 29);
-    	cjb2 = new JButton();
-    	cjb2.setBackground(Color.BLUE);
-    	cjb2.addActionListener(cler);
-    	cjb2.setBounds(130, 7, 52, 29);
-    	cjb3 = new JButton();
-    	cjb3.setBackground(Color.PINK);
-    	cjb3.addActionListener(cler);
-    	cjb3.setBounds(190, 7, 52, 29);
-    	cjb4 = new JButton();
-    	cjb4.setBackground(Color.YELLOW);
-    	cjb4.addActionListener(cler);
-    	cjb4.setBounds(7, 47, 52, 29);
-    	cjb5 = new JButton();
-    	cjb5.setBackground(Color.GREEN);
-    	cjb5.addActionListener(cler);
-    	cjb5.setBounds(70, 47, 52, 29);
-    	cjb6 = new JButton();
-    	cjb6.setBackground(Color.ORANGE);
-    	cjb6.addActionListener(cler);
-    	cjb6.setBounds(130, 47, 52, 29);
-    	cjb7 = new JButton();
-    	cjb7.setBackground(Color.RED);
-    	cjb7.addActionListener(cler);
-    	cjb7.setBounds(190, 47, 52, 29);
+		ImageIcon brushIcon = new ImageIcon(imageManager.getBrushImage());
+		ImageIcon eraserIcon = new ImageIcon(imageManager.getEraserImage());
+    	jButtonEraser = new JButton(brushIcon);  //Ç¦±Ê°´Å¥
+    	jButtonBrush = new JButton(eraserIcon);  //ÏðÆ¤°´Å¥
+    	ChangeListener changeListener = new ChangeListener();
+    	jButtonEraser.addActionListener(changeListener);
+    	jButtonBrush.addActionListener(changeListener);
+    	jButtonEraser.setBounds(380, 7, 52, 29);
+    	jButtonBrush.setBounds(325, 7, 52, 29);
+
+    	ColorListener colorListener = new ColorListener();  //¶¨ÒåÒ»¸öÑÕÉ«¼àÌýÆ÷
+    	jButtonColor1 = new JButton();
+    	jButtonColor1.setBackground(Color.BLACK);
+    	jButtonColor1.addActionListener(colorListener);
+    	jButtonColor1.setBounds(70, 7, 52, 29);
+    	jButtonColor2 = new JButton();
+    	jButtonColor2.setBackground(Color.BLUE);
+    	jButtonColor2.addActionListener(colorListener);
+    	jButtonColor2.setBounds(130, 7, 52, 29);
+    	jButtonColor3 = new JButton();
+    	jButtonColor3.setBackground(Color.PINK);
+    	jButtonColor3.addActionListener(colorListener);
+    	jButtonColor3.setBounds(190, 7, 52, 29);
+    	jButtonColor4 = new JButton();
+    	jButtonColor4.setBackground(Color.YELLOW);
+    	jButtonColor4.addActionListener(colorListener);
+    	jButtonColor4.setBounds(7, 47, 52, 29);
+    	jButtonColor5 = new JButton();
+    	jButtonColor5.setBackground(Color.GREEN);
+    	jButtonColor5.addActionListener(colorListener);
+    	jButtonColor5.setBounds(70, 47, 52, 29);
+    	jButtonColor6 = new JButton();
+    	jButtonColor6.setBackground(Color.ORANGE);
+    	jButtonColor6.addActionListener(colorListener);
+    	jButtonColor6.setBounds(130, 47, 52, 29);
+    	jButtonColor7 = new JButton();
+    	jButtonColor7.setBackground(Color.RED);
+    	jButtonColor7.addActionListener(colorListener);
+    	jButtonColor7.setBounds(190, 47, 52, 29);
 
 
-    	jp = new JPanel();
-    	jp.setBounds(0,418 , 590,83);
-    	jp.setBackground(Color.LIGHT_GRAY);
-    	jp.setLayout(null);
-    	jp.add(jb1);
-    	jp.add(jb2);
-    	jp.add(jb3);
-    	jp.add(jb4);
-    	jp.add(jb5);
-    	jp.add(jb6);
-    	jp.add(jb7);
-    	jp.add(jb8);
-    	jp.add(jl1);
-    	jp.add(jl2);
-    	jp.add(jl3);
-    	jp.add(cjb1);
-    	jp.add(cjb2);
-    	jp.add(cjb3);
-    	jp.add(cjb4);
-    	jp.add(cjb5);
-    	jp.add(cjb6);
-    	jp.add(cjb7);
+    	jPanelTools = new JPanel();
+    	jPanelTools.setBounds(0,418 , WIDTH,83);
+    	jPanelTools.setBackground(Color.LIGHT_GRAY);
+    	jPanelTools.setLayout(null);
+    	jPanelTools.add(jButtonClear);
+    	jPanelTools.add(jButtonEraser);
+    	jPanelTools.add(jButtonBrush);
+    	jPanelTools.add(jButtonCancel);
+    	jPanelTools.add(jButtonBrush1);
+    	jPanelTools.add(jButtonBrush2);
+    	jPanelTools.add(jButtonBrush3);
+    	jPanelTools.add(jButtonBrush4);
+    	jPanelTools.add(jLabelTool);
+    	jPanelTools.add(jLabelBrush);
+    	jPanelTools.add(jLabelColor);
+    	jPanelTools.add(jButtonColor1);
+    	jPanelTools.add(jButtonColor2);
+    	jPanelTools.add(jButtonColor3);
+    	jPanelTools.add(jButtonColor4);
+    	jPanelTools.add(jButtonColor5);
+    	jPanelTools.add(jButtonColor6);
+    	jPanelTools.add(jButtonColor7);
 
     	 //ÏÂÃæÊÇ»­°åºÍ¹¤¾ßÀ¸Ãæ°æµÄ×ÜÃæ°æpp
     	setLayout(null);
     	setBackground(Color.WHITE);
-    	setBounds(0, 0, 600, 500);
-    	add(jp);
-    	PaintListener l = new PaintListener();  //»­°æµÄ¼àÌýÆ÷
-    	addMouseListener(l);  //½«¼àÌýÆ÷Ìí¼Óµ½»­°åÖÐ
-	    addMouseMotionListener(l);
+    	setBounds(0, 0, WIDTH, 500);
+    	add(jPanelTools);
+    	PaintListener paintListener = new PaintListener();  //»­°æµÄ¼àÌýÆ÷
+    	addMouseListener(paintListener);  //½«¼àÌýÆ÷Ìí¼Óµ½»­°åÖÐ
+	    addMouseMotionListener(paintListener);
 	}
 
 
@@ -163,17 +180,16 @@ private class PaintListener implements MouseListener,MouseMotionListener //Ð´Ò»¸
 	{
 		if(id==0)
 		{
-			switch(flag)
+			switch(chooseTool)
 			{
 			case 1:
-				Point po1 = new Point(e.getPoint().x,e.getPoint().y,true,co,n,1);
+				Point po1 = new Point(e.getPoint().x,e.getPoint().y,true, chooseColor,n,1);
 				list.add(po1);
 //				PointNewMsg msg = new PointNewMsg(id,po1,clear,cancel);
-
 				repaint();
 				break;
 			case 2:
-				Point po2 = new Point(e.getPoint().x,e.getPoint().y,true,co,n,2);
+				Point po2 = new Point(e.getPoint().x,e.getPoint().y,true, chooseColor,n,2);
 				list.add(po2);
 //				PointNewMsg msg1 = new PointNewMsg(id,po2,clear,cancel);
 
@@ -199,16 +215,16 @@ private class PaintListener implements MouseListener,MouseMotionListener //Ð´Ò»¸
 	    //½«Ã¿´ÎÐÂµÃµ½µÄÊó±êËù°´ÏÂµÄµãµÄ¶ÔÏóÌí¼Óµ½listÊý×éÖÐ
 		if(id==0)
 		{
-			switch(flag)
+			switch(chooseTool)
 			{
 			case 1:
-				Point po3 = new Point(e.getPoint().x,e.getPoint().y,true,co,n,1);
+				Point po3 = new Point(e.getPoint().x,e.getPoint().y,true, chooseColor,n,1);
 				list.add(po3);
 //				PointNewMsg msg = new PointNewMsg(id,po3,clear,cancel);
 
 				break;
 			case 2:
-				Point po4 = new Point(e.getPoint().x,e.getPoint().y,true,co,n,2);
+				Point po4 = new Point(e.getPoint().x,e.getPoint().y,true, chooseColor,n,2);
 				list.add(po4);
 //				PointNewMsg msg1 = new PointNewMsg(id,po4,clear,cancel);
 
@@ -220,16 +236,16 @@ private class PaintListener implements MouseListener,MouseMotionListener //Ð´Ò»¸
 	{
 		if(id==0)
 		{
-			switch(flag)
+			switch(chooseTool)
 			{
 			case 1:
-				Point po5 = new Point(e.getPoint().x,e.getPoint().y,false,co,n,1);
+				Point po5 = new Point(e.getPoint().x,e.getPoint().y,false, chooseColor,n,1);
 				list.add(po5);
 //				PointNewMsg msg = new PointNewMsg(id,po5,clear,cancel);
 				repaint();
 				break;
 			case 2:
-				Point po6 = new Point(e.getPoint().x,e.getPoint().y,false,co,n,2);
+				Point po6 = new Point(e.getPoint().x,e.getPoint().y,false, chooseColor,n,2);
 				list.add(po6);
 //				PointNewMsg msg1 = new PointNewMsg(id,po6,clear,cancel);
 				repaint();
@@ -246,7 +262,7 @@ private class ClearListener implements ActionListener  //ÇåÆÁµÄ¼àÌýÆ÷
 	public void actionPerformed(ActionEvent e)
 	{
 
-		if((JButton)e.getSource()==jb1)
+		if((JButton)e.getSource()== jButtonClear)
 		{
 			//list.clear();
 			clear = true;
@@ -263,7 +279,7 @@ private class CancelListener implements ActionListener  //³·ÏúµÄ¼àÌýÆ÷
 	{
 		try
 		{
-			if((JButton)e.getSource()==jb4)
+			if((JButton)e.getSource()== jButtonCancel)
 			{
 				cancel = true;
 //				PointNewMsg msg = new PointNewMsg(id,new Point(1,1,false,co,n,2),clear,cancel);
@@ -286,7 +302,7 @@ private class CancelListener implements ActionListener  //³·ÏúµÄ¼àÌýÆ÷
 			}
 		}catch(Exception ee)
 		{
-			System.out.println("");
+			System.out.println("cancel error");
 		}
 
 	}
@@ -297,20 +313,20 @@ private class ColorListener implements ActionListener  //»­±ÊÑÕÉ«µÄ¼àÌýÆ÷
 {
 	public void actionPerformed(ActionEvent e)
 	{
-		if(e.getSource()==cjb1)
-			co = 1;
-		if(e.getSource()==cjb2)
-			co = 2;
-		if(e.getSource()==cjb3)
-			co = 3;
-		if(e.getSource()==cjb4)
-			co = 4;
-		if(e.getSource()==cjb5)
-			co = 5;
-		if(e.getSource()==cjb6)
-			co = 6;
-		if(e.getSource()==cjb7)
-			co = 7;
+		if(e.getSource()==jButtonColor1)
+			chooseColor = 1;
+		if(e.getSource()== jButtonColor2)
+			chooseColor = 2;
+		if(e.getSource()== jButtonColor3)
+			chooseColor = 3;
+		if(e.getSource()== jButtonColor4)
+			chooseColor = 4;
+		if(e.getSource()== jButtonColor5)
+			chooseColor = 5;
+		if(e.getSource()== jButtonColor6)
+			chooseColor = 6;
+		if(e.getSource()== jButtonColor7)
+			chooseColor = 7;
 
 	}
 
@@ -321,13 +337,13 @@ public class WriterListener implements ActionListener  //»­±Ê´ÖÏ¸µÄ¼àÌýÆ÷
 
 	public void actionPerformed(ActionEvent e)
 	{
-		if(e.getSource()==jb5)
+		if(e.getSource()== jButtonBrush1)
 			n = 11;
-		if(e.getSource()==jb6)
+		if(e.getSource()==jButtonBrush2)
 			n = 7;
-		if(e.getSource()==jb7)
+		if(e.getSource()==jButtonBrush3)
 			n = 3;
-		if(e.getSource()==jb8)
+		if(e.getSource()==jButtonBrush4)
 			n = 1;
 
 	}
@@ -336,20 +352,20 @@ public class WriterListener implements ActionListener  //»­±Ê´ÖÏ¸µÄ¼àÌýÆ÷
 
 public void actionPerformed(ActionEvent e)       //»­±ÊºÍÏðÆ¤Ö®¼äÇÐ»»µÄ¼àÌýÆ÷
 {
-	if(e.getSource()==jb2)   //Ç¦±Ê
-		flag = 1;
+	if(e.getSource()==jButtonEraser)   //Ç¦±Ê
+		chooseTool = 1;
 	else  //ÏðÆ¤
-		flag = 2;
+		chooseTool = 2;
 }
 
 public class ChangeListener implements ActionListener    //»­±ÊºÍÏðÆ¤Ö®¼äÇÐ»»µÄ¼àÌýÆ÷
 {
 	public void actionPerformed(ActionEvent e)
 	{
-		if(e.getSource()==jb2)
-			flag = 1;
-		if(e.getSource()==jb3)
-			flag = 2;
+		if(e.getSource()==jButtonEraser)
+			chooseTool = 1;
+		if(e.getSource()==jButtonBrush)
+			chooseTool = 2;
 	}
 
 }

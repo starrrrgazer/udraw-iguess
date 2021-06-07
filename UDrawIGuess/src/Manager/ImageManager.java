@@ -55,6 +55,21 @@ public class ImageManager {
         return closeImages;
     }
 
+    public Image getBrushImage() {
+        return FileControl.getImage("brush.png");
+    }
+
+    public Image getEraserImage() {
+        return FileControl.getImage("eraser.png");
+    }
+
+    public Image getClearImage() {
+        return FileControl.getImage("clear.png");
+    }
+
+    public Image getCancelImage() {
+        return FileControl.getImage("cancel.jpeg");
+    }
 
 }
 

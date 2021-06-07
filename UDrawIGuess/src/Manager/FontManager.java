@@ -15,4 +15,8 @@ public class FontManager {
         return new Font("Ώ¬Με", Font.BOLD, 12);
     }
 
+    public Font getPaintLabelFont(){
+        return new Font("Ώ¬Με", Font.BOLD, 12);
+    }
+
 }
