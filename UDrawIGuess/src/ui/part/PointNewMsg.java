@@ -1,6 +1,7 @@
-package DrawAndGuess;
+package ui.part;
 
-import java.awt.Color;
+import DrawAndGuess.DrawAndGuess;
+
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -10,7 +11,7 @@ import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
 import java.net.SocketException;
 
-public class PointNewMsg implements AllMsg 
+public class PointNewMsg implements AllMsg
 {
 	DrawAndGuess tc;
 	

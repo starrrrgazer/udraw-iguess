@@ -1,4 +1,4 @@
-package DrawAndGuess;
+package ui.part;
 
 import java.awt.Color;
 import java.io.Serializable;

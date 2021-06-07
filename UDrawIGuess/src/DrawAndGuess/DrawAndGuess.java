@@ -1,13 +1,12 @@
 package DrawAndGuess;
+import ui.mergeFace.MainPanel;
+
 import java.awt.*;
 
 import javax.swing.*;
 
-import java.awt.event.*; 
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import java.util.List;
+import java.awt.event.*;
+
 public class DrawAndGuess extends JFrame
 {
 int set = 0;
@@ -33,7 +32,7 @@ int set = 0;
 	private JTextField udpTf;
 	private JButton b2;
 	
-	MainPanel mp = new MainPanel(this);
+	public MainPanel mp = new MainPanel(this);
 	Font f1 = new Font("宋体",Font.PLAIN,12);
 	
     public DrawAndGuess()  //构造方法
@@ -240,4 +239,6 @@ int set = 0;
 	    		 dialog.setVisible(true);
 	    	}
 	    }
+
+
 }

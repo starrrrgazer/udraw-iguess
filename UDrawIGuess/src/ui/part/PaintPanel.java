@@ -1,15 +1,10 @@
-package DrawAndGuess;
+package ui.part;
+
+import DrawAndGuess.DrawAndGuess;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetSocketAddress;
-import java.net.SocketException;
 import java.util.List;
 import java.util.*;
 
@@ -37,7 +32,7 @@ public class PaintPanel extends JPanel implements ActionListener    //画图板的类
     private int n;
     static boolean clear = false;
     static boolean cancel = false;
-    int id;   //记录用户ID，以便画出来
+    public int id;   //记录用户ID，以便画出来
     
     DatagramSocket ds;
     DrawAndGuess tc;

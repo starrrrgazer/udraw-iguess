@@ -1,4 +1,7 @@
-package DrawAndGuess;
+package ui.mergeFace;
+
+import DrawAndGuess.DrawAndGuess;
+import ui.part.PaintPanel;
 
 import java.awt.*;
 import java.sql.*;
@@ -24,7 +27,7 @@ public class MainPanel extends JPanel  //中间主面板的类
     DrawAndGuess tc;
     private JPopupMenu popup;
     
-    PaintPanel pp = new PaintPanel(tc);
+    public PaintPanel pp = new PaintPanel(tc);
     
     public MainPanel(DrawAndGuess tc)
     {

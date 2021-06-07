@@ -1,4 +1,4 @@
-package DrawAndGuess;
+package ui.part;
 import java.io.*;
 import java.net.*;
 public interface AllMsg 
