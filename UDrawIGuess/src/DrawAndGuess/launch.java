@@ -1,6 +1,9 @@
 package DrawAndGuess;
 
 import ui.mergeFace.DGMainFrame;
+import ui.mergeFace.MainFrame;
+
+import javax.swing.*;
 
 public class launch {
     public static DGMainFrame client;
@@ -12,7 +15,13 @@ public class launch {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-        client = new DGMainFrame();
-        client.launchFrame();
+//        client = new DGMainFrame();
+//        client.launchFrame();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new MainFrame();
+            }
+        });
     }
 }

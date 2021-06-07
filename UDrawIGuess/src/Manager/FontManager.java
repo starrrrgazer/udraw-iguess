@@ -11,4 +11,8 @@ public class FontManager {
         return fontManager;
     }
 
+    public Font getTitleFont() {
+        return new Font("Ώ¬Με", Font.BOLD, 12);
+    }
+
 }
