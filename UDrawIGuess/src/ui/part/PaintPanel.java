@@ -60,7 +60,7 @@ public class PaintPanel extends JPanel implements ActionListener    //画图板的类
     	ClearListener clearListener = new ClearListener();
     	jButtonClear.addActionListener(clearListener);
     	jButtonClear.setBounds(497,7, 60, 29);
-//    	jButtonClear.setContentAreaFilled(false);
+    	jButtonClear.setContentAreaFilled(false);
 
     	CancelListener cancelListener = new CancelListener();
 		ImageIcon cancelIcon = new ImageIcon(imageManager.getCancelImage());
@@ -68,7 +68,7 @@ public class PaintPanel extends JPanel implements ActionListener    //画图板的类
     	jButtonCancel.setFont(paintLabelFont);
     	jButtonCancel.addActionListener(cancelListener);
     	jButtonCancel.setBounds(434, 7, 61, 29);
-//    	jButtonCancel.setContentAreaFilled(false);
+    	jButtonCancel.setContentAreaFilled(false);
 
     	WriterListener writerListener = new WriterListener();
     	jButtonBrush1 = new JButton("4");  //最粗的线
@@ -101,6 +101,8 @@ public class PaintPanel extends JPanel implements ActionListener    //画图板的类
 		ImageIcon eraserIcon = new ImageIcon(imageManager.getEraserImage());
     	jButtonEraser = new JButton(brushIcon);  //铅笔按钮
     	jButtonBrush = new JButton(eraserIcon);  //橡皮按钮
+		jButtonEraser.setContentAreaFilled(false);
+		jButtonBrush.setContentAreaFilled(false);
     	ChangeListener changeListener = new ChangeListener();
     	jButtonEraser.addActionListener(changeListener);
     	jButtonBrush.addActionListener(changeListener);

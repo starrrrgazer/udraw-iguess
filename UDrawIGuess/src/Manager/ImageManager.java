@@ -68,7 +68,7 @@ public class ImageManager {
     }
 
     public Image getCancelImage() {
-        return FileControl.getImage("cancel.jpeg");
+        return FileControl.getImage("cancel1.png");
     }
 
 }
