@@ -1,6 +1,7 @@
 package ui.part;
 
-import ui.mergeFace.DGMainFrame;
+
+import ui.mergeFace.MainFrame;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -17,7 +18,7 @@ public class PaintPanel extends JPanel implements ActionListener    //»­Í¼°åµÄÀà
     Point p1,p2;
     int x1,y1,x2,y2;
     int flag = 1;//ÅĞ¶Ïµ±Ç°ËùÓÃµÄ¹¤¾ß,Ä¬ÈÏÎªÇ¦±Ê
-    
+
     Font f1 = new Font("ËÎÌå",Font.PLAIN,14);
     Font f2 = new Font("ËÎÌå",Font.PLAIN,12);
     private JButton jb1,jb4;  //Çå¿Õ»­°å,ºÍ³·ÏúÉÏÒ»´Î»­µÄÍ¼°¸µÄ°´Å¥
@@ -26,22 +27,22 @@ public class PaintPanel extends JPanel implements ActionListener    //»­Í¼°åµÄÀà
     private JButton jb5,jb6,jb7,jb8;  //ÉèÖÃËÄ¸ö»­±Ê´ÖÏ¸µÄ°´Å¥
     private JLabel jl1,jl2,jl3,jl4;  //ÉèÖÃÌáÊ¾²Ù×÷µÄ±êÇ©
     private JButton cjb1,cjb2,cjb3,cjb4,cjb5,cjb6,cjb7;  //Ñ¡ÔñÑÕÉ«µÄ°´Å¥
-    
+
     private Color c;
     int co = 1;
     private int n;
     static boolean clear = false;
     static boolean cancel = false;
     public int id;   //¼ÇÂ¼ÓÃ»§ID£¬ÒÔ±ã»­³öÀ´
-    
+
     DatagramSocket ds;
-    DGMainFrame tc;
-  
-    
-	public PaintPanel(DGMainFrame tc)
+    MainFrame tc;
+
+
+	public PaintPanel(MainFrame tc)
 	{
 		this.tc = tc;
-		
+
 		//ÏÂÃæÊÇ¹¤¾ßÀ¸µÄÃæ°æjp
     	jb1 = new JButton("Çå¿Õ");
     	jb1.setFont(f2);
@@ -53,7 +54,7 @@ public class PaintPanel extends JPanel implements ActionListener    //»­Í¼°åµÄÀà
     	jb4.setFont(f2);
     	jb4.addActionListener(cl2);
     	jb4.setBounds(434, 7, 61, 29);
-    	
+
     	WriterListener wl = new WriterListener();
     	jb5 = new JButton("4");  //×î´ÖµÄÏß
     	jb5.addActionListener(wl);
@@ -67,7 +68,7 @@ public class PaintPanel extends JPanel implements ActionListener    //»­Í¼°åµÄÀà
     	jb6.setBounds(380, 47, 52, 29);
     	jb7.setBounds(434, 47, 61, 29);
     	jb8.setBounds(497,47, 60, 29);
-    	
+
     	jl1 = new JLabel("¹¤¾ß:");
     	jl1.setFont(f1);
 		jl1.setForeground(Color.BLUE);
@@ -80,7 +81,7 @@ public class PaintPanel extends JPanel implements ActionListener    //»­Í¼°åµÄÀà
     	jl3.setFont(f1);
 		jl3.setForeground(Color.BLUE);
     	jl3.setBounds(7, 7, 77, 29);
-		
+
     	jb2 = new JButton("±Ê");  //Ç¦±Ê°´Å¥
     	jb3 = new JButton("Æ¤");  //ÏğÆ¤°´Å¥
     	ChangeListener cl3 = new ChangeListener();
@@ -88,7 +89,7 @@ public class PaintPanel extends JPanel implements ActionListener    //»­Í¼°åµÄÀà
     	jb3.addActionListener(cl3);
     	jb2.setBounds(380, 7, 52, 29);
     	jb3.setBounds(325, 7, 52, 29);
-    	
+
     	ColorListener cler = new ColorListener();  //¶¨ÒåÒ»¸öÑÕÉ«¼àÌıÆ÷
     	cjb1 = new JButton();
     	cjb1.setBackground(Color.BLACK);
@@ -118,8 +119,8 @@ public class PaintPanel extends JPanel implements ActionListener    //»­Í¼°åµÄÀà
     	cjb7.setBackground(Color.RED);
     	cjb7.addActionListener(cler);
     	cjb7.setBounds(190, 47, 52, 29);
-    
-    	
+
+
     	jp = new JPanel();
     	jp.setBounds(0,418 , 590,83);
     	jp.setBackground(Color.LIGHT_GRAY);
@@ -142,7 +143,7 @@ public class PaintPanel extends JPanel implements ActionListener    //»­Í¼°åµÄÀà
     	jp.add(cjb5);
     	jp.add(cjb6);
     	jp.add(cjb7);
-    	
+
     	 //ÏÂÃæÊÇ»­°åºÍ¹¤¾ßÀ¸Ãæ°æµÄ×ÜÃæ°æpp
     	setLayout(null);
     	setBackground(Color.WHITE);
@@ -157,7 +158,7 @@ public class PaintPanel extends JPanel implements ActionListener    //»­Í¼°åµÄÀà
 
 private class PaintListener implements MouseListener,MouseMotionListener //Ğ´Ò»¸ö¼àÌıÆ÷¿ÉÒÔ»­³öÇúÏß
 {
-	
+
 	public void mouseDragged(MouseEvent e) //Êó±êÍÏ¶¯
 	{
 		if(id==0)
@@ -167,31 +168,31 @@ private class PaintListener implements MouseListener,MouseMotionListener //Ğ´Ò»¸
 			case 1:
 				Point po1 = new Point(e.getPoint().x,e.getPoint().y,true,co,n,1);
 				list.add(po1);
-				PointNewMsg msg = new PointNewMsg(id,po1,clear,cancel);
+//				PointNewMsg msg = new PointNewMsg(id,po1,clear,cancel);
 
 				repaint();
 				break;
 			case 2:
 				Point po2 = new Point(e.getPoint().x,e.getPoint().y,true,co,n,2);
 				list.add(po2);
-				PointNewMsg msg1 = new PointNewMsg(id,po2,clear,cancel);
+//				PointNewMsg msg1 = new PointNewMsg(id,po2,clear,cancel);
 
 				repaint();
 				break;
 			}
 		}
 	}
-	public void mouseMoved(MouseEvent arg0) 
+	public void mouseMoved(MouseEvent arg0)
 	{
 	}
-	public void mouseClicked(MouseEvent arg0) 
+	public void mouseClicked(MouseEvent arg0)
 	{
 	}
-	public void mouseEntered(MouseEvent arg0) 
+	public void mouseEntered(MouseEvent arg0)
 	{
 	}
-	public void mouseExited(MouseEvent arg0) 
-	{			
+	public void mouseExited(MouseEvent arg0)
+	{
 	}
 	public void mousePressed(MouseEvent e) //Êó±ê°´ÏÂ
 	{
@@ -203,14 +204,13 @@ private class PaintListener implements MouseListener,MouseMotionListener //Ğ´Ò»¸
 			case 1:
 				Point po3 = new Point(e.getPoint().x,e.getPoint().y,true,co,n,1);
 				list.add(po3);
-				PointNewMsg msg = new PointNewMsg(id,po3,clear,cancel);
-//System.out.println(""+tc);
+//				PointNewMsg msg = new PointNewMsg(id,po3,clear,cancel);
 
 				break;
 			case 2:
 				Point po4 = new Point(e.getPoint().x,e.getPoint().y,true,co,n,2);
 				list.add(po4);
-				PointNewMsg msg1 = new PointNewMsg(id,po4,clear,cancel);
+//				PointNewMsg msg1 = new PointNewMsg(id,po4,clear,cancel);
 
 				break;
 			}
@@ -225,49 +225,49 @@ private class PaintListener implements MouseListener,MouseMotionListener //Ğ´Ò»¸
 			case 1:
 				Point po5 = new Point(e.getPoint().x,e.getPoint().y,false,co,n,1);
 				list.add(po5);
-				PointNewMsg msg = new PointNewMsg(id,po5,clear,cancel);
+//				PointNewMsg msg = new PointNewMsg(id,po5,clear,cancel);
 				repaint();
 				break;
 			case 2:
 				Point po6 = new Point(e.getPoint().x,e.getPoint().y,false,co,n,2);
 				list.add(po6);
-				PointNewMsg msg1 = new PointNewMsg(id,po6,clear,cancel);
+//				PointNewMsg msg1 = new PointNewMsg(id,po6,clear,cancel);
 				repaint();
 				break;
 			}
 		}
-		
+
 	}
-	
+
 }
 
 private class ClearListener implements ActionListener  //ÇåÆÁµÄ¼àÌıÆ÷
 {
-	public void actionPerformed(ActionEvent e) 
+	public void actionPerformed(ActionEvent e)
 	{
-					
+
 		if((JButton)e.getSource()==jb1)
-		{	
+		{
 			//list.clear();
 			clear = true;
-			PointNewMsg msg = new PointNewMsg(id,new Point(1,1,false,co,n,2),clear,cancel);
+//			PointNewMsg msg = new PointNewMsg(id,new Point(1,1,false,co,n,2),clear,cancel);
 			repaint();
 		}
 	}
-	
+
 }
 
 private class CancelListener implements ActionListener  //³·ÏúµÄ¼àÌıÆ÷
 {
-	public void actionPerformed(ActionEvent e) 
+	public void actionPerformed(ActionEvent e)
 	{
 		try
 		{
 			if((JButton)e.getSource()==jb4)
 			{
 				cancel = true;
-				PointNewMsg msg = new PointNewMsg(id,new Point(1,1,false,co,n,2),clear,cancel);
-				
+//				PointNewMsg msg = new PointNewMsg(id,new Point(1,1,false,co,n,2),clear,cancel);
+
 				if(list.size()>0)
 				{
 				  int i = list.size()-1;
@@ -278,7 +278,7 @@ private class CancelListener implements ActionListener  //³·ÏúµÄ¼àÌıÆ÷
 				  }
 				  if(i>=0)
 				  {
-					  list.remove(list.get(i));  
+					  list.remove(list.get(i));
 				  }
 				  repaint();
 				}
@@ -290,12 +290,12 @@ private class CancelListener implements ActionListener  //³·ÏúµÄ¼àÌıÆ÷
 		}
 
 	}
-	
+
 }
 
 private class ColorListener implements ActionListener  //»­±ÊÑÕÉ«µÄ¼àÌıÆ÷
 {
-	public void actionPerformed(ActionEvent e) 
+	public void actionPerformed(ActionEvent e)
 	{
 		if(e.getSource()==cjb1)
 			co = 1;
@@ -311,15 +311,15 @@ private class ColorListener implements ActionListener  //»­±ÊÑÕÉ«µÄ¼àÌıÆ÷
 			co = 6;
 		if(e.getSource()==cjb7)
 			co = 7;
-		
+
 	}
-	
+
 }
 
 public class WriterListener implements ActionListener  //»­±Ê´ÖÏ¸µÄ¼àÌıÆ÷
 {
 
-	public void actionPerformed(ActionEvent e) 
+	public void actionPerformed(ActionEvent e)
 	{
 		if(e.getSource()==jb5)
 			n = 11;
@@ -329,9 +329,9 @@ public class WriterListener implements ActionListener  //»­±Ê´ÖÏ¸µÄ¼àÌıÆ÷
 			n = 3;
 		if(e.getSource()==jb8)
 			n = 1;
-		
+
 	}
-	
+
 }
 
 public void actionPerformed(ActionEvent e)       //»­±ÊºÍÏğÆ¤Ö®¼äÇĞ»»µÄ¼àÌıÆ÷
@@ -344,14 +344,14 @@ public void actionPerformed(ActionEvent e)       //»­±ÊºÍÏğÆ¤Ö®¼äÇĞ»»µÄ¼àÌıÆ÷
 
 public class ChangeListener implements ActionListener    //»­±ÊºÍÏğÆ¤Ö®¼äÇĞ»»µÄ¼àÌıÆ÷
 {
-	public void actionPerformed(ActionEvent e) 
+	public void actionPerformed(ActionEvent e)
 	{
 		if(e.getSource()==jb2)
 			flag = 1;
 		if(e.getSource()==jb3)
 			flag = 2;
 	}
-	
+
 }
 
 public void paint(Graphics g)  //»­±Ê
@@ -362,13 +362,13 @@ public void paint(Graphics g)  //»­±Ê
 	 {
 		 for(int i=0;i<list.size()-1;i++)  //°ÑÊı×éÖĞËùÓĞµÄÔªËØËù´ú±íµÄµã¶¼»­³öÀ´
 	     {
-	    		
+
 	    		if(list.get(i)==null)
 	    			continue;
 	        	//µÃµ½Êı×éÖĞÁ¬ĞøµÄÁ½¸öÔªËØ£¬²¢°ü×°³ÉÁ½¸öµã
 	    		p1=(Point)list.get(i);  //µÃµ½µÚiÎ»µÄÔªËØ
 	    		p2=(Point)list.get(i+1);
-	    		switch (p1.tool) 
+	    		switch (p1.tool)
 				{
 				case 1:
 					if(p1.f==true)
@@ -397,16 +397,16 @@ public void paint(Graphics g)  //»­±Ê
 							g2.setColor(Color.RED);
 						    break;
 						}
-		    			
+
 		    			g2.setStroke(new BasicStroke(p1.cx, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL));
-		    			g2.drawLine(p1.x,p1.y, p2.x, p2.y);  //»­Ïß		
+		    			g2.drawLine(p1.x,p1.y, p2.x, p2.y);  //»­Ïß
 				    }
 					break;
 				case 2:
 					setBackground(Color.WHITE);
 					g2.clearRect(p1.x, p1.y, 20, 20);
 					break;
-				}	
+				}
 	     }
 	 }
 	 else
@@ -414,7 +414,7 @@ public void paint(Graphics g)  //»­±Ê
 		 list.clear();
 		 clear = false;
 	 }
-	
-  } 
+
+  }
 
 }

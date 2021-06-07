@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 
 import Manager.FontManager;
 import Manager.ImageManager;
+import ui.part.PaintPanel;
 import ui.part.component.FrameButton;
 
 
@@ -61,7 +62,8 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
     private FrameButton close = new FrameButton(FrameButton.Type.CLOSE);
 
     private JPanel currentPanel = null;
-/* 这里需要插入一些panel*/
+/* 这里需要定义一些panel*/
+    private PaintPanel paintPanel = new PaintPanel(this);
 
     private Font titleFont = FontManager.getDefaultFontManager().getTitleFont();
 
@@ -93,11 +95,8 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
             }
         });
 
-//        ComponentDropper.getDefaultDropper().switchPanel(getCurrentPanel(), getOnLinePanel());
-
         setColor(new Color(211, 211, 211));
 
-//        leapPanel.setVisible(true);
     }
 
     private void initFace() {
@@ -107,7 +106,7 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
         viewPanel.setLayout(null);
         viewPanel.add(toastPanel);
         viewPanel.add(showPanel);
-
+        viewPanel.add(paintPanel);
 
         toastPanel.setBounds(0, 0, WIDTH, HEIGHT - 30);
         toastPanel.setOpaque(false);
@@ -115,7 +114,6 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
         showPanel.setBounds(0, 0, WIDTH, HEIGHT - 30);
         showPanel.setOpaque(false);
         showPanel.setLayout(null);
-
 
     }
 
