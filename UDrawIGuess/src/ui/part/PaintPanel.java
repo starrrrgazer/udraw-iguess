@@ -49,8 +49,7 @@ public class PaintPanel extends JPanel implements ActionListener    //画图板的类
     DatagramSocket ds;
     MainFrame mainFrame;
 
-	public PaintPanel(MainFrame mainFrame)
-	{
+	public PaintPanel(MainFrame mainFrame) {
 		this.mainFrame = mainFrame;
 
 		//下面是工具栏的面版jp
@@ -163,14 +162,14 @@ public class PaintPanel extends JPanel implements ActionListener    //画图板的类
     	jPanelTools.add(jButtonColor6);
     	jPanelTools.add(jButtonColor7);
 
-    	 //下面是画板和工具栏面版的总面版pp
-    	setLayout(null);
-    	setBackground(Color.WHITE);
-    	setBounds(0, 0, WIDTH, 500);
-    	add(jPanelTools);
-    	PaintListener paintListener = new PaintListener();  //画版的监听器
-    	addMouseListener(paintListener);  //将监听器添加到画板中
-	    addMouseMotionListener(paintListener);
+		//下面是画板和工具栏面版的总面版pp
+		setLayout(null);
+		setBackground(Color.WHITE);
+		setBounds(0, 0, WIDTH, 500);
+		add(jPanelTools);
+		PaintListener paintListener = new PaintListener();  //画版的监听器
+		addMouseListener(paintListener);  //将监听器添加到画板中
+		addMouseMotionListener(paintListener);
 	}
 
 
