@@ -62,7 +62,7 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
 
     private JPanel currentPanel = null;
 /* 这里需要定义一些panel*/
-    private PaintPanel paintPanel = new PaintPanel(this);
+//    private PaintPanel paintPanel = new PaintPanel(this);
     private OnLinePanel onLinePanel = new OnLinePanel(this);
     private Font titleFont = FontManager.getDefaultFontManager().getTitleFont();
 
