@@ -29,7 +29,7 @@ public class PaintPanel extends JPanel implements ActionListener    //画图板的类
     MainFrame mainFrame;
 
 	private PaintPanel() {
-		this.mainFrame = MainFrame.mainFrame;
+		this.mainFrame = MainFrame.getMainFrame();
 		this.paintToolPanel=PaintToolPanel.getPaintToolPanel();
 		this.clear=this.paintToolPanel.clear;
 		//下面是画板和工具栏面版的总面版pp

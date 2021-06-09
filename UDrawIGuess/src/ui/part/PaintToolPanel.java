@@ -40,7 +40,7 @@ public class PaintToolPanel extends JPanel implements ActionListener {
     MainFrame mainFrame;
 
     private PaintToolPanel(){
-        this.mainFrame=MainFrame.mainFrame;
+        this.mainFrame=MainFrame.getMainFrame();
 
         //下面是工具栏的面版jp
         ImageIcon clearIcon = new ImageIcon(imageManager.getClearImage());

@@ -24,7 +24,7 @@ public class FontManager {
     }
 
     public Font getInputFieldFont() {
-        return new Font("Ώ¬Με", Font.BOLD, 16);
+        return new Font("Ώ¬Με", Font.PLAIN, 16);
     }
 
     public Font getButtonFont() {
