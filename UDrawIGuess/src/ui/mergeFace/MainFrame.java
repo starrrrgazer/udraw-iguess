@@ -18,13 +18,14 @@ import javax.swing.JPanel;
 import Manager.FontManager;
 import Manager.ImageManager;
 import ui.part.PaintPanel;
+import ui.part.PaintToolPanel;
 import ui.part.component.FrameButton;
 
 
 //@SuppressWarnings("serial")
 public class MainFrame extends JFrame implements MouseListener, MouseMotionListener {
 
-    private static MainFrame mainFrame;
+    public static MainFrame mainFrame;
 
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
@@ -63,7 +64,7 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
 
     private JPanel currentPanel = null;
 /* 这里需要定义一些panel*/
-    private PaintPanel paintPanel = new PaintPanel(this);
+
 
     private Font titleFont = FontManager.getDefaultFontManager().getTitleFont();
 
@@ -106,7 +107,8 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
         viewPanel.setLayout(null);
         viewPanel.add(toastPanel);
         viewPanel.add(showPanel);
-        viewPanel.add(paintPanel);
+        viewPanel.add(PaintPanel.getPaintPanel());
+        viewPanel.add(PaintToolPanel.getPaintToolPanel());
 
         toastPanel.setBounds(0, 0, WIDTH, HEIGHT - 30);
         toastPanel.setOpaque(false);
