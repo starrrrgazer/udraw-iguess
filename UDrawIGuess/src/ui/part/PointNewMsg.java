@@ -11,8 +11,7 @@
 //import java.net.InetSocketAddress;
 //import java.net.SocketException;
 //
-//public class PointNewMsg implements AllMsg
-//{
+//public class PointNewMsg implements AllMsg//{
 ////	DGMainFrame tc;
 //
 //	int id;

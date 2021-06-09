@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 
 import Manager.ImageManager;
 
-//@SuppressWarnings("serial")
 public class FrameButton extends JPanel implements MouseListener {
 
     public static enum Type { MINIMIZE, MAXIMIZE, CLOSE }

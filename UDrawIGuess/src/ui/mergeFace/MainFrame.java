@@ -17,11 +17,12 @@ import javax.swing.JPanel;
 
 import Manager.FontManager;
 import Manager.ImageManager;
+import ui.part.ComponentDropper;
 import ui.part.PaintPanel;
 import ui.part.component.FrameButton;
 
 
-//@SuppressWarnings("serial")
+
 public class MainFrame extends JFrame implements MouseListener, MouseMotionListener {
 
     private static MainFrame mainFrame;
@@ -32,8 +33,6 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
     private Point location;
     private Point frameLocation;
 
-    private JPanel toastPanel = new JPanel();
-    private JPanel showPanel = new JPanel();
     private JPanel framePanel = new JPanel() {
         private Image img = ImageManager.getDefaultImageManager().getFrameBg();
         @Override
@@ -64,12 +63,11 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
     private JPanel currentPanel = null;
 /* 这里需要定义一些panel*/
     private PaintPanel paintPanel = new PaintPanel(this);
-
+    private OnLinePanel onLinePanel = new OnLinePanel(this);
     private Font titleFont = FontManager.getDefaultFontManager().getTitleFont();
 
     public MainFrame() {
         mainFrame = this;
-
 
         initFrameDecorated();
         initFace();
@@ -95,6 +93,7 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
             }
         });
 
+        ComponentDropper.getDefaultDropper().switchPanel(getCurrentPanel(), getOnLinePanel());
         setColor(new Color(211, 211, 211));
 
     }
@@ -104,17 +103,10 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
         viewPanel.setBounds(0, 30, WIDTH, HEIGHT - 30);
         viewPanel.setBackground(Color.WHITE);
         viewPanel.setLayout(null);
-        viewPanel.add(toastPanel);
-        viewPanel.add(showPanel);
-        viewPanel.add(paintPanel);
+//        viewPanel.add(paintPanel);
+        viewPanel.add(onLinePanel);
 
-        toastPanel.setBounds(0, 0, WIDTH, HEIGHT - 30);
-        toastPanel.setOpaque(false);
-        toastPanel.setLayout(null);
-        showPanel.setBounds(0, 0, WIDTH, HEIGHT - 30);
-        showPanel.setOpaque(false);
-        showPanel.setLayout(null);
-
+        onLinePanel.setBounds(0, -900, WIDTH, HEIGHT - 30);
     }
 
     private void initFrameDecorated() {
@@ -153,14 +145,13 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
         System.exit(0);
     }
 
-
-    public JPanel getToastPanel() {
-        return toastPanel;
-    }
-
-
     public JPanel getCurrentPanel() {
         return currentPanel;
+    }
+
+    public OnLinePanel getOnLinePanel() {
+        currentPanel = onLinePanel;
+        return onLinePanel;
     }
 
     public static MainFrame getMainFrame() {

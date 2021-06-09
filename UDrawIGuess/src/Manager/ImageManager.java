@@ -6,10 +6,6 @@ import java.awt.image.BufferedImage;
 public class ImageManager {
     private static ImageManager imageManager = new ImageManager();
 
-    private BufferedImage[] headPortraits = new BufferedImage[] {
-
-    };
-
     private ImageManager() {}
 
     public static ImageManager getDefaultImageManager() {
@@ -55,6 +51,7 @@ public class ImageManager {
         return closeImages;
     }
 
+    //获取画板工具
     public Image getBrushImage() {
         return FileControl.getImage("brush.png");
     }
@@ -69,6 +66,65 @@ public class ImageManager {
 
     public Image getCancelImage() {
         return FileControl.getImage("cancel1.png");
+    }
+
+    //获取头像
+    private BufferedImage[] headPortraits = new BufferedImage[] {
+            FileControl.getBufferedImage("background/concave_mini_bg.png"),
+            FileControl.getBufferedImage("avatar/01.jpg"),
+            FileControl.getBufferedImage("avatar/02.jpg"),
+            FileControl.getBufferedImage("avatar/03.jpg"),
+            FileControl.getBufferedImage("avatar/04.jpg"),
+            FileControl.getBufferedImage("avatar/05.jpg"),
+            FileControl.getBufferedImage("avatar/06.jpg"),
+            FileControl.getBufferedImage("avatar/07.jpg"),
+            FileControl.getBufferedImage("avatar/08.jpg"),
+            FileControl.getBufferedImage("avatar/09.jpg"),
+            FileControl.getBufferedImage("avatar/10.jpg"),
+            FileControl.getBufferedImage("avatar/11.jpg"),
+            FileControl.getBufferedImage("avatar/12.jpg"),
+            FileControl.getBufferedImage("avatar/13.jpg"),
+            FileControl.getBufferedImage("avatar/14.jpg"),
+            FileControl.getBufferedImage("background/convex_mini_bg.png")
+    };
+    public BufferedImage getHeadPortraits(int i) {
+        return headPortraits[i];
+    }
+    public Image getHeadBg() {
+        return getConcaveMiniBg();
+    }
+    private Image getConcaveMiniBg() {
+        return FileControl.getImage("background/concave_mini_bg.png");
+    }
+    private Image getConcaveBg() {
+        return FileControl.getImage("background/concave_bg.png");
+    }
+    private Image getConvexBg() {
+        return FileControl.getImage("background/convex_bg.png");
+    }
+    private Image getConvexMiniBg() {
+        return FileControl.getImage("background/convex_mini_bg.png");
+    }
+
+
+
+    //inputfield
+    public Image getInputFieldBg() {
+        return FileControl.getImage("background/input_field_bg.png");
+    }
+    //button
+    public Image[] getButtonBgs() {
+        Image[] buttonBgs = new Image[] {
+                getConvexMiniBg(),
+                getConcaveMiniBg()
+        };
+        return buttonBgs;
+    }
+    public Image getJumpButtonBg() {
+        return FileControl.getImage("background/jump_button_bg.png");
+    }
+    public Image getBoardBg() {
+        return FileControl.getImage("background/board_bg.png");
     }
 
 }
