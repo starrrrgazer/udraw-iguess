@@ -22,6 +22,7 @@ import socket.Config;
 import socket.GamePlayThread;
 import socket.ServerAction;
 import ui.part.component.MyButton;
+import ui.part.gamepart.Toast;
 
 
 public class HeaderPanel extends JPanel implements MouseListener {

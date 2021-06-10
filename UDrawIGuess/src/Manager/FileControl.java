@@ -14,18 +14,16 @@ public class FileControl {
     //项目文件必须位于src目录下的下列3个子文件夹之一
     private static final String FILE = "FileResource/file/";	//存放普通文件
     private static final String IMAGE = "FileResource/image/";	//存放图片文件
-    private static final String FONT = "FileResource/font/";	//存放字体文件
     private static final HashMap<String, String> MAP = new HashMap<String, String>();
     static {
         MAP.put("file", FILE);
         MAP.put("image", IMAGE);
-        MAP.put("font", FONT);
     }
 
     /**
      * 返回资源文件的URL地址
      * @param type 资源文件类型,包括文件、图片和音频
-     * @param path 资源文件路径(如：me.jpg)
+     * @param path 资源文件路径
      * @return 资源文件的URL地址
      */
     public static URL getURL(String type, String path) {
@@ -37,21 +35,6 @@ public class FileControl {
     public static InputStream getInputStream(String type, String path) {
         String dir = MAP.get(type);
         return URLClassLoader.getSystemClassLoader().getResourceAsStream(dir + path);
-    }
-
-    //获取字体资源
-    public static Font getFont(String path) {
-        try {
-            InputStream input = getInputStream("font", path);
-            if (input != null) {
-                return Font.createFont(Font.TRUETYPE_FONT, input);
-            }
-        } catch (FontFormatException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     //获取文件资源

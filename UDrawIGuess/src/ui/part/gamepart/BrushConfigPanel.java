@@ -1,4 +1,4 @@
-package ui.part;
+package ui.part.gamepart;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -11,6 +11,7 @@ import socket.Config;
 import socket.DataPackage;
 import socket.ServerAction;
 import ui.mergeFace.MainFrame;
+import ui.part.TypeLabel;
 import ui.part.TypeLabel.Type;
 import socket.DataPackage.DataType;
 

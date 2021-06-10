@@ -1,8 +1,9 @@
-package ui.part;
+package ui.part.gamepart;
 
 import Manager.FileControl;
 import Manager.FontManager;
 import socket.DesaturateFilter;
+import ui.part.HeadPortraitLabel;
 
 import java.awt.Font;
 import java.awt.image.BufferedImage;

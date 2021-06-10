@@ -5,7 +5,7 @@ import Manager.ImageManager;
 import socket.ClientAction;
 import socket.Config;
 import ui.part.ButtonDropper;
-import ui.part.Toast;
+import ui.part.gamepart.Toast;
 import ui.part.component.JumpButton;
 import ui.part.component.MyTextField;
 

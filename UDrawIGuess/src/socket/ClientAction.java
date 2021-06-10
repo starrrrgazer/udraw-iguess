@@ -4,7 +4,7 @@ import ui.mergeFace.GamePanel;
 import ui.mergeFace.MainFrame;
 import ui.part.ComponentDropper;
 import ui.part.HeaderPanel;
-import ui.part.Toast;
+import ui.part.gamepart.Toast;
 
 import java.awt.Color;
 import java.awt.Point;

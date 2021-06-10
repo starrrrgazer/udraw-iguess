@@ -1,4 +1,4 @@
-package ui.part;
+package ui.part.gamepart;
 
 import Manager.FontManager;
 
@@ -32,7 +32,7 @@ public class ServerInfoPanel extends JPanel {
 
 	public void updateInfo(String roomName, String ip, int port) {
 		String myRoomName = "房间名：" + roomName;
-//		String myIp = "ip地址：" + ip;
+		String myIp = "ip地址：" + ip;
 		String myPort = "端口号：" + port;
 		roomNameLabel.setText(myRoomName);
 //		roomIpLabel.setText(myIp);

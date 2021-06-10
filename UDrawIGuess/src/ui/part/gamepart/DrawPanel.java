@@ -1,4 +1,4 @@
-package ui.part;
+package ui.part.gamepart;
 
 
 import Manager.ImageManager;

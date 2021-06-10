@@ -1,6 +1,7 @@
-package ui.part;
+package ui.part.gamepart;
 
 import Manager.FontManager;
+import ui.part.HeadPortraitLabel;
 
 import java.awt.Color;
 import java.awt.Font;

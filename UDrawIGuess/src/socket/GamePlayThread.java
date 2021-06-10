@@ -5,7 +5,7 @@ import ui.mergeFace.GamePanel;
 import socket.DataPackage.DataType;
 import ui.mergeFace.MainFrame;
 import ui.part.HeaderPanel;
-import ui.part.Toast;
+import ui.part.gamepart.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;

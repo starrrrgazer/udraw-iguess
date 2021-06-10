@@ -3,6 +3,8 @@ package ui.part;
 import Manager.FontManager;
 import ui.mergeFace.MainFrame;
 import ui.part.component.MyButton;
+import ui.part.gamepart.Toast;
+import ui.part.gamepart.ToastPanel;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -42,7 +44,7 @@ public class TopicPanel extends ToastPanel implements MouseListener {
 	private JLabel countDown = new JLabel();
 	private JLabel topicLabel = new JLabel();
 	private JLabel topic = new JLabel();
-	private MyButton saveImage = new MyButton("保存为图片");
+//	private MyButton saveImage = new MyButton("保存为图片");
 	
 	private FontManager fontManager = FontManager.getDefaultFontManager();
 	private Font toastTopicPanelFont = fontManager.getToastTopicPanelFont();
@@ -53,7 +55,7 @@ public class TopicPanel extends ToastPanel implements MouseListener {
 		initBounds();
 		setTime(System.currentTimeMillis(), duration);
 		
-		this.saveImage.addMouseListener(this);
+//		this.saveImage.addMouseListener(this);
 		
 		setLayout(null);
 		add(this.guessedConut);
@@ -61,7 +63,7 @@ public class TopicPanel extends ToastPanel implements MouseListener {
 		add(this.countDown);
 		add(this.topicLabel);
 		add(this.topic);
-		add(this.saveImage);
+//		add(this.saveImage);
 		setSize(width, height);
 		setOpaque(false);
 	}
@@ -103,7 +105,7 @@ public class TopicPanel extends ToastPanel implements MouseListener {
 		this.topicLabel.setBounds(width - topicLabelWidth - topicWidth >> 1, 80 - defaultFontHeight, topicLabelWidth, defaultFontHeight);
 		this.topic.setBounds(width + topicLabelWidth - topicWidth >> 1, 80 - topicHeight, topicWidth, topicHeight);
 
-		this.saveImage.setBounds(110, 117, 100, 30);
+//		this.saveImage.setBounds(110, 117, 100, 30);
 	}
 	
 	private void setTime(long time, int duration) {

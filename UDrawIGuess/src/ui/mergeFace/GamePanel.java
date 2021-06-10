@@ -15,6 +15,7 @@ import socket.TCPServerThread;
 import ui.part.*;
 import ui.part.component.JumpButton;
 import socket.DataPackage.DataType;
+import ui.part.gamepart.*;
 
 public class GamePanel extends FacePanel {
 	
