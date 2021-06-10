@@ -173,8 +173,8 @@ public class ImageManager {
 
     public Image[] getCursorIcon() {
         Image[] cursorIcon = new Image[] {
-                FileControl.getImage("icon/brush.gif"),
-                FileControl.getImage("icon/eraser.gif")
+                FileControl.getImage("brush.png"),
+                FileControl.getImage("eraser.png")
         };
         return cursorIcon;
     }
