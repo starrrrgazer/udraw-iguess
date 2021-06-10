@@ -18,7 +18,7 @@ public class ScoreLabel extends JPanel {
 	private HeadPortraitLabel headPortraitLabel = new HeadPortraitLabel(0);
 	private JLabel painterLabel = new JLabel();
 	private JLabel guessedLabel = new JLabel();
-	private JLabel scoreLabel = new JLabel("0");
+	private JLabel scoreLabel = new JLabel("得分：0");
 	
 	private Font scorePanelfont = FontManager.getDefaultFontManager().getScorePanelFont();
 	
@@ -64,7 +64,7 @@ public class ScoreLabel extends JPanel {
 	
 	public void addScore(int score) {
 		int currentScore = getScore();
-		scoreLabel.setText(currentScore + score + "");
+		scoreLabel.setText("得分：" + currentScore + score + "");
 	}
 	
 	public void lostConnection() {

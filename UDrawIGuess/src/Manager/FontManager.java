@@ -31,6 +31,10 @@ public class FontManager {
         return new Font("楷体", Font.BOLD, 30);
     }
 
+    public Font getChooseHPFont() {
+        return new Font("楷体", Font.BOLD, 18);
+    }
+
     public Font getIpConnectLabelFont() {
         return new Font("楷体", Font.BOLD, 16);
     }
@@ -52,7 +56,7 @@ public class FontManager {
     }
 
     public Font getHeaderNoticeFont() {
-        return new Font("楷体", Font.PLAIN, 8);
+        return new Font("楷体", Font.PLAIN, 10);
     }
 
     public Font getThreeCountdownFont() {

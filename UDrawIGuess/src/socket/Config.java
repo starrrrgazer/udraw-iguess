@@ -17,10 +17,10 @@ public class Config {
 	public static String ip ="127.0.0.1";
 	
 	/*服务器端口*/
-	public static int port = 3141;
+	public static int port = 1920;
 	
 	/*多播端口*/
-	public static int udpPort = 3141;
+	public static int udpPort = 1920;
 
 	/*房间容量*/
 	public static int maximum = 4;

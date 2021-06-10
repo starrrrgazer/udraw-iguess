@@ -35,9 +35,9 @@ public class IpConnectPanel extends FacePanel {
 		}
 	};
 	private JLabel IPLabel = new JLabel("服务器IP：");
-	private MyTextField IPjtf = new MyTextField(Config.ip);
+	private MyTextField IPjtf = new MyTextField();
 	private JLabel portLabel = new JLabel("端 口 号：");
-	private MyTextField portjtf = new MyTextField(Config.port+1 + "");
+	private MyTextField portjtf = new MyTextField();
 	
 	private JumpButton connect = new JumpButton("连接游戏");
 	private JumpButton back = new JumpButton("返 回");
@@ -54,11 +54,11 @@ public class IpConnectPanel extends FacePanel {
 		IPLabel.setFont(ipConnectfont);
 		IPLabel.setBounds(125, 200, 100, 30);
 		IPjtf.setBounds(215, 200, 160, 30);
-		IPjtf.setToolTipText("IP格式 ：127.0.0.1");
+		IPjtf.setToolTipText("IP格式：127.0.0.1");
 		portLabel.setFont(ipConnectfont);
 		portLabel.setBounds(125, 240, 100, 30);
 		portjtf.setBounds(215, 240, 160, 30);
-		portjtf.setToolTipText("Port格式 ：小于65536的整数");
+		portjtf.setToolTipText("Port格式：小于65536的整数");
 		
 		connect.addMouseListener(this);
 		back.addMouseListener(this);
@@ -69,7 +69,7 @@ public class IpConnectPanel extends FacePanel {
 		panel.add(portjtf);
 		
 		connect.setBounds(MainFrame.WIDTH - JumpButton.WIDTH >> 1, 470, JumpButton.WIDTH, JumpButton.HEIGHT);
-		back.setBounds(600, 30, 48, 60);
+		back.setBounds(600, 50, 48, 60);
 		
 		add(panel);
 		add(connect);
