@@ -8,9 +8,13 @@ import java.util.EventObject;
 import javax.swing.JLabel;
 
 import Manager.FontManager;
-import socket.*;
+import socket.ClientAction;
+import socket.Config;
+import socket.ServerAction;
+import socket.TCPServerThread;
 import ui.part.*;
 import ui.part.component.JumpButton;
+import socket.DataPackage.DataType;
 
 public class GamePanel extends FacePanel {
 	
@@ -114,13 +118,13 @@ public class GamePanel extends FacePanel {
 		if (Config.serving) {
 			Config.waiting = false;
 			Config.serving = false;
-			ServerAction.sendData(DataPackage.DataType.LOGOUT, null);
+			ServerAction.sendData(DataType.LOGOUT, null);
 			TCPServerThread.closeServer();
 			Toast.getDefaultToast().makeToastClear();
 			Toast.getDefaultToast().makeToastNotice("房间已解散！", 1000);
 			ComponentDropper.getDefaultDropper().switchPanel(owner.getCurrentPanel(), owner.getOnLinePanel());
 		} else {
-			ClientAction.sendData(DataPackage.DataType.LOGOUT, null);
+			ClientAction.sendData(DataType.LOGOUT, null);
 			ClientAction.close();
 		}
 	}

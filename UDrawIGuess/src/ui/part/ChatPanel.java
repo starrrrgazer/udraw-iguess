@@ -34,7 +34,7 @@ public class ChatPanel extends JPanel implements ActionListener, MouseListener {
 	private JTextPane chatPane = new JTextPane();
 	private final int headPortraitWidth = 30;
 	
-	private JLabel chatTitle = new JLabel("聊天信息↓");
+	private JLabel chatTitle = new JLabel("聊天信息：");
 	private MyScrollPane chatScroll = new MyScrollPane(chatPane);
 	private MyTextField chatField = new MyTextField();
 	private MyButton sendButton = new MyButton("发送");

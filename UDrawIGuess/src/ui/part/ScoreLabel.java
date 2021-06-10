@@ -54,7 +54,7 @@ public class ScoreLabel extends JPanel {
 	public void setClient(String progressId, String name, int headPortrait) {
 		this.progressId = progressId;
 		nameLabel.setText(name);
-		headPortraitLabel.setImage(FileControl.getBufferedImage("head_portrait/" + (headPortrait + 100 + "").substring(1) + ".jpg"));
+		headPortraitLabel.setImage(FileControl.getBufferedImage("avatar/" + (headPortrait + 100 + "").substring(1) + ".jpg"));
 	}
 	
 	public void initScore(String value) {

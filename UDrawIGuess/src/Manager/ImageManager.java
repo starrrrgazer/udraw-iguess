@@ -21,7 +21,7 @@ public class ImageManager {
     }
 
     public Image getViewBg() {
-        return FileControl.getImage("background/view_bg.jpg");
+        return FileControl.getImage("background/view_bg.png");
     }
 
     public Image[] getMinimizeImages() {
@@ -124,7 +124,7 @@ public class ImageManager {
         return FileControl.getImage("background/jump_button_bg.png");
     }
     public Image getBoardBg() {
-        return FileControl.getImage("background/board_bg.png");
+        return FileControl.getImage("background/board_bg3.jpg");
     }
 
     private Image getConvexCircleBg() {
@@ -160,15 +160,15 @@ public class ImageManager {
     }
 
     public Image getBrushIcon() {
-        return FileControl.getImage("icon/brush.png");
+        return FileControl.getImage("brush.png");
     }
 
     public Image getEraserIcon() {
-        return FileControl.getImage("icon/eraser.png");
+        return FileControl.getImage("eraser.png");
     }
 
     public Image getClearIcon() {
-        return FileControl.getImage("icon/clear.png");
+        return FileControl.getImage("clear.png");
     }
 
     public Image[] getCursorIcon() {

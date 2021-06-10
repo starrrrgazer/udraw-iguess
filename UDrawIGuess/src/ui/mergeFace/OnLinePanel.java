@@ -2,6 +2,8 @@ package ui.mergeFace;
 
 import Manager.FontManager;
 import socket.Config;
+import socket.TCPServerThread;
+import ui.part.ButtonDropper;
 import ui.part.HeadPortraitPanel;
 import ui.part.component.JumpButton;
 import ui.part.component.MyTextField;
@@ -17,32 +19,29 @@ import javax.swing.JLabel;
 
 
 public class OnLinePanel extends FacePanel {
-	
+
 	private HeadPortraitPanel headPortraitPanel = new HeadPortraitPanel();
-	
+
 	private JLabel nickName = new JLabel("昵 称：");
 	private MyTextField nickNameField = new MyTextField();
-	
+
 	private JumpButton newRoom = new JumpButton("创建游戏");
 	private JumpButton joinIn = new JumpButton("加入游戏");
-	
+
 	private Font nameConfigLabelFont = FontManager.getDefaultFontManager().getNameConfigLabelFont();
-	
+
 	public OnLinePanel(MainFrame owner) {
 		super(owner);
-		
+
 		headPortraitPanel.setBounds(100, 80, 600, 300);
-		
+
 		nickName.setFont(nameConfigLabelFont);
-		nickName.setForeground(Color.WHITE);
 		nickName.setBounds(200, 410, 150, 40);
 		nickNameField.setBounds(300, 415, 300, 30);
-		
+
 		int temp = (int) ((MainFrame.WIDTH - (JumpButton.WIDTH << 1)) * JumpButton.GOLD_SECTION);
 		newRoom.setBounds(MainFrame.WIDTH - temp - (JumpButton.WIDTH << 1), 475, JumpButton.WIDTH, JumpButton.HEIGHT);
 		joinIn.setBounds(temp + JumpButton.WIDTH, 475, JumpButton.WIDTH, JumpButton.HEIGHT);
-		newRoom.setForeground(Color.WHITE);
-		joinIn.setForeground(Color.WHITE);
 
 		newRoom.addMouseListener(this);
 		joinIn.addMouseListener(this);
@@ -52,11 +51,11 @@ public class OnLinePanel extends FacePanel {
 		add(nickNameField);
 		add(newRoom);
 		add(joinIn);
-		
+
 		setLayout(null);
 		setEnabled(false);
 	}
-	
+
 	public void buttonPressed(EventObject e) {
 		if (isEnabled()) {
 			try {
@@ -70,7 +69,12 @@ public class OnLinePanel extends FacePanel {
 			} else {
 				Config.nickName = nickNameConfig;
 			}
-
+			if (e.getSource() == newRoom) {
+				new TCPServerThread().start();
+				ButtonDropper.getDefaultDropper().pressed((Component) e.getSource(), owner.getCurrentPanel(), owner.getGamePanel());
+			} else if (e.getSource() == joinIn) {
+				ButtonDropper.getDefaultDropper().pressed((Component) e.getSource(), owner.getCurrentPanel(), owner.getIpConnectPanel());
+			}
 		}
 	}
 
