@@ -37,7 +37,7 @@ public class IpConnectPanel extends FacePanel {
 	private JLabel IPLabel = new JLabel("服务器IP：");
 	private MyTextField IPjtf = new MyTextField(Config.ip);
 	private JLabel portLabel = new JLabel("端 口 号：");
-	private MyTextField portjtf = new MyTextField(Config.port + "");
+	private MyTextField portjtf = new MyTextField(Config.port+1 + "");
 	
 	private JumpButton connect = new JumpButton("连接游戏");
 	private JumpButton back = new JumpButton("返 回");

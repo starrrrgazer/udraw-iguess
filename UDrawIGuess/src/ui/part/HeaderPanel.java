@@ -94,7 +94,7 @@ public class HeaderPanel extends JPanel implements MouseListener {
 	}
 	
 	public void setPainterHeadPortrait(int headPortrait) {
-		BufferedImage img = FileControl.getBufferedImage("head_portrait/" + (headPortrait + 100 + "").substring(1) + ".jpg");
+		BufferedImage img = FileControl.getBufferedImage("avatar/" + (headPortrait + 100 + "").substring(1) + ".jpg");
 		this.headPortrait.setImage(img);
 	}
 	

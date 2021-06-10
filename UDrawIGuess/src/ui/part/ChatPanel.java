@@ -61,10 +61,10 @@ public class ChatPanel extends JPanel implements ActionListener, MouseListener {
 	@Override
 	public void setBounds(int x, int y, int width, int height) {
 		super.setBounds(x, y, width, height);
-		chatTitle.setBounds(width - 80, 0, 80, 30);
+		chatTitle.setBounds(width - 100, 0, 80, 30);
 		chatScroll.setBounds(5, 25, width - 7, height - 70);
-		chatField.setBounds(5, height - 40, width - 60, 30);
-		sendButton.setBounds(width - 53, height - 40, 50, 30);
+		chatField.setBounds(5, height - 50, width - 60, 30);
+		sendButton.setBounds(width - 60, height - 50, 50, 30);
 	}
 	
 	public void chatPaneClear() {
@@ -83,7 +83,7 @@ public class ChatPanel extends JPanel implements ActionListener, MouseListener {
 	
 	private void insertHeadPortrait(int headPortrait) {
 		
-		BufferedImage img = FileControl.getBufferedImage("head_portrait/" + (headPortrait + 100 + "").substring(1) + ".jpg");
+		BufferedImage img = FileControl.getBufferedImage("avatar/" + (headPortrait + 100 + "").substring(1) + ".jpg");
 		BufferedImage bimg = new BufferedImage(headPortraitWidth, headPortraitWidth, BufferedImage.TYPE_4BYTE_ABGR);
 		bimg.createGraphics().drawImage(img, 0, 0, headPortraitWidth, headPortraitWidth, null);
 		

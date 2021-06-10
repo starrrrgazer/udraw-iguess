@@ -40,7 +40,7 @@ public class GamePanel extends FacePanel {
 		drawPanel.setBounds(100, 95, 480, 345);
 		scorePanel.setBounds(40, 440, 540, 100);
 		chatPanel.setBounds(580, 70, 180, 470);
-		back.setBounds(600, 30, 48, 60);
+		back.setBounds(600, 42, 48, 60);
 		countDown.setBounds(290, 165, 100, 100);
 
 		countDown.setHorizontalAlignment(JLabel.CENTER);

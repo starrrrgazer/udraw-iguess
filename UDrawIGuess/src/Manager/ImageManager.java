@@ -121,7 +121,7 @@ public class ImageManager {
         return buttonBgs;
     }
     public Image getJumpButtonBg() {
-        return FileControl.getImage("background/jump_button_bg.png");
+        return FileControl.getImage("background/jump_button_bg1.png");
     }
     public Image getBoardBg() {
         return FileControl.getImage("background/board_bg3.jpg");

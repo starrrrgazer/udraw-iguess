@@ -10,6 +10,7 @@ import ui.part.component.MyTextField;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.EventObject;
@@ -59,7 +60,8 @@ public class OnLinePanel extends FacePanel {
 	public void buttonPressed(EventObject e) {
 		if (isEnabled()) {
 			try {
-				Config.ip = InetAddress.getLocalHost().getHostAddress();
+				Config.ip = Inet4Address.getLocalHost().getHostAddress();
+				System.out.println(Config.ip);
 			} catch (UnknownHostException e1) {
 				e1.printStackTrace();
 			}
