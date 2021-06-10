@@ -2,7 +2,7 @@ package ui.part.gamepart;
 
 import Manager.FontManager;
 import socket.Config;
-import ui.mergeFace.MainFrame;
+import ui.mergePanel.MainFrame;
 
 import java.awt.Color;
 import java.awt.Font;

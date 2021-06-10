@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/src/ui/mergeFace/DGMainFrame.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/ui/mergeFace/MainFrame.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/ui/mergeFace/MainPanel.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/ui/mergePanel/DGMainFrame.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/ui/mergePanel/MainFrame.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/ui/mergePanel/MainPanel.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/ui/part/PaintPanel.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/ui/part/Point.java" charset="GBK" />
   </component>

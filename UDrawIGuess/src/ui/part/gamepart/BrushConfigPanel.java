@@ -10,7 +10,7 @@ import socket.ClientAction;
 import socket.Config;
 import socket.DataPackage;
 import socket.ServerAction;
-import ui.mergeFace.MainFrame;
+import ui.mergePanel.MainFrame;
 import ui.part.TypeLabel;
 import ui.part.TypeLabel.Type;
 import socket.DataPackage.DataType;

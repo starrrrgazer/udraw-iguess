@@ -1,4 +1,4 @@
-package ui.mergeFace;
+package ui.mergePanel;
 
 import Manager.FontManager;
 import Manager.ImageManager;
@@ -22,7 +22,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-
+/**
+ * ip连接页面，可以连接已经开启服务端的主机的ip和端口
+ */
 public class IpConnectPanel extends FacePanel {
 	
 	private JPanel panel = new JPanel() {
@@ -43,7 +45,12 @@ public class IpConnectPanel extends FacePanel {
 	private JumpButton back = new JumpButton("返 回");
 	
 	private Font ipConnectfont = FontManager.getDefaultFontManager().getIpConnectLabelFont();
-	
+
+	/**
+	 * 构造函数
+	 * @param owner
+	 * panel的所有者，即mainFrame
+	 */
 	public IpConnectPanel(MainFrame owner) {
 		super(owner);
 		

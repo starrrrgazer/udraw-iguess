@@ -1,6 +1,6 @@
 package ui.part.gamepart;
 
-import ui.mergeFace.MainFrame;
+import ui.mergePanel.MainFrame;
 
 import java.awt.Component;
 import java.awt.Container;

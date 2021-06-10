@@ -1,9 +1,9 @@
 package socket;
 
 import Manager.FileControl;
-import ui.mergeFace.GamePanel;
+import ui.mergePanel.GamePanel;
 import socket.DataPackage.DataType;
-import ui.mergeFace.MainFrame;
+import ui.mergePanel.MainFrame;
 import ui.part.gamepart.HeaderPanel;
 import ui.part.gamepart.Toast;
 

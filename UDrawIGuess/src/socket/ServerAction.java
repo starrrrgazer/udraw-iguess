@@ -1,7 +1,7 @@
 package socket;
 
-import ui.mergeFace.GamePanel;
-import ui.mergeFace.MainFrame;
+import ui.mergePanel.GamePanel;
+import ui.mergePanel.MainFrame;
 import socket.DataPackage.DataType;
 
 import java.awt.Color;

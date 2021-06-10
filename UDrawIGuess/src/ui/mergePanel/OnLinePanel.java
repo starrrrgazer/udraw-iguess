@@ -1,4 +1,4 @@
-package ui.mergeFace;
+package ui.mergePanel;
 
 import Manager.FontManager;
 import socket.Config;
@@ -11,14 +11,15 @@ import ui.part.component.MyTextField;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.net.Inet4Address;
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.EventObject;
 
 import javax.swing.JLabel;
 
 
-
+/**
+ * 进入游戏的第一个界面，在这里可以选择头像，填写昵称，选择创建游戏或者加入游戏
+ */
 public class OnLinePanel extends FacePanel {
 	private JLabel chooseHeadPortraitPanel = new JLabel("选择头像：");
 	private HeadPortraitPanel headPortraitPanel = new HeadPortraitPanel();
@@ -32,6 +33,12 @@ public class OnLinePanel extends FacePanel {
 	private Font nameConfigLabelFont = FontManager.getDefaultFontManager().getNameConfigLabelFont();
 	private Font chooseHPFont = FontManager.getDefaultFontManager().getChooseHPFont();
 
+	/**
+	 * 构造函数。
+	 * onlinePanel的初始化,加入各个组件
+	 * @param owner
+	 * panel的所有者，即mainFrame
+	 */
 	public OnLinePanel(MainFrame owner) {
 		super(owner);
 		chooseHeadPortraitPanel.setBounds(50,50,100,20);
@@ -59,6 +66,15 @@ public class OnLinePanel extends FacePanel {
 		setEnabled(false);
 	}
 
+	/**
+	 * 如果用户没有填写昵称，则用Java自带的获取ip函数获取ip作为昵称
+	 * 如果点击创建游戏，则新建服务端的线程
+	 * 点击创建游戏或者加入游戏，会发生页面跳转
+	 * @param e
+	 * 事件对象
+	 * @see TCPServerThread
+	 * @see ButtonDropper
+	 */
 	public void buttonPressed(EventObject e) {
 		if (isEnabled()) {
 			try {
@@ -87,6 +103,11 @@ public class OnLinePanel extends FacePanel {
 
 	}
 
+	/**
+	 *
+	 * @param e
+	 * 鼠标点击
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		buttonPressed(e);

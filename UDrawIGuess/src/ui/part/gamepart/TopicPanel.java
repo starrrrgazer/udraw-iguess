@@ -1,10 +1,7 @@
 package ui.part.gamepart;
 
 import Manager.FontManager;
-import ui.mergeFace.MainFrame;
-import ui.part.component.MyButton;
-import ui.part.gamepart.Toast;
-import ui.part.gamepart.ToastPanel;
+import ui.mergePanel.MainFrame;
 
 import java.awt.Color;
 import java.awt.Font;

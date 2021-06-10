@@ -1,4 +1,4 @@
-package ui.mergeFace;
+package ui.mergePanel;
 
 import java.awt.Component;
 import java.awt.Font;
@@ -17,6 +17,9 @@ import ui.part.component.JumpButton;
 import socket.DataPackage.DataType;
 import ui.part.gamepart.*;
 
+/**
+ * 游戏主体的界面
+ */
 public class GamePanel extends FacePanel {
 	
 	private ServerInfoPanel infoPanel = new ServerInfoPanel();

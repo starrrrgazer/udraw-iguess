@@ -1,7 +1,7 @@
 package socket;
 
-import ui.mergeFace.GamePanel;
-import ui.mergeFace.MainFrame;
+import ui.mergePanel.GamePanel;
+import ui.mergePanel.MainFrame;
 import ui.part.ComponentDropper;
 import ui.part.gamepart.HeaderPanel;
 import ui.part.gamepart.Toast;

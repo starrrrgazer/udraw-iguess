@@ -1,4 +1,4 @@
-package ui.mergeFace;
+package ui.mergePanel;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -20,10 +20,15 @@ import Manager.ImageManager;
 import ui.part.ComponentDropper;
 import ui.part.component.FrameButton;
 
-
+/**
+ * 这是程序的主要的Frame，其他界面都是作为Panel显示在里面
+ * 下面的各个Panel是总的Panel，可以互相跳转
+ * @see OnLinePanel
+ * @see GamePanel
+ * @see IpConnectPanel
+ */
 
 public class MainFrame extends JFrame implements MouseListener, MouseMotionListener {
-
     private static MainFrame mainFrame;
 
     public static final int WIDTH = 800;
@@ -33,14 +38,7 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
     private Point frameLocation;
 
     private JPanel toastPanel = new JPanel();
-    private JPanel showPanel = new JPanel();
-    private JPanel framePanel = new JPanel() {
-        private Image img = ImageManager.getDefaultImageManager().getFrameBg();
-        @Override
-        protected void paintComponent(Graphics g) {
-            g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-        }
-    };
+    private JPanel framePanel = new JPanel();
     private JPanel titlePanel = new JPanel() {
         private Image img = ImageManager.getDefaultImageManager().getTitleBg();
         @Override
@@ -68,9 +66,16 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
 
     private Font titleFont = FontManager.getDefaultFontManager().getTitleFont();
 
+
+    /**
+     * MainFrame的构造函数
+     * framePanel是覆盖整个MainFrame的Panel，里面有titlePanel：标题栏，和viewPanel：标题下面的界面
+     * 通过ComponentDropper的切换界面的方法，将当前界面切换到进入的第一个界面onlinePanel
+     * @see ComponentDropper
+     * @see OnLinePanel
+     */
     public MainFrame() {
         mainFrame = this;
-
 
         initFrameDecorated();
         initFace();
@@ -98,8 +103,15 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
 
         ComponentDropper.getDefaultDropper().switchPanel(getCurrentPanel(), getOnLinePanel());
 
-        setColor(new Color(211, 211, 211));
     }
+
+    /**
+     * 初始化各个界面，并加入各个界面
+     * @see ui.part.gamepart.ToastPanel
+     * @see OnLinePanel
+     * @see GamePanel
+     * @see IpConnectPanel
+     */
 
     private void initFace() {
 
@@ -107,7 +119,6 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
         viewPanel.setBackground(Color.WHITE);
         viewPanel.setLayout(null);
         viewPanel.add(toastPanel);
-        viewPanel.add(showPanel);
         viewPanel.add(onLinePanel);
         viewPanel.add(gamePanel);
         viewPanel.add(ipConnectPanel);
@@ -115,14 +126,15 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
         toastPanel.setBounds(0, 0, WIDTH, HEIGHT - 30);
         toastPanel.setOpaque(false);
         toastPanel.setLayout(null);
-        showPanel.setBounds(0, 0, WIDTH, HEIGHT - 30);
-        showPanel.setOpaque(false);
-        showPanel.setLayout(null);
 
         onLinePanel.setBounds(0, -900, WIDTH, HEIGHT - 30);
         gamePanel.setBounds(0, -900, WIDTH, HEIGHT - 30);
         ipConnectPanel.setBounds(0, -900, WIDTH, HEIGHT - 30);
     }
+
+    /**
+     * 初始化标题栏：titlePanel的各个属性
+     */
 
     private void initFrameDecorated() {
 
@@ -149,49 +161,77 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
         close.addMouseListener(this);
     }
 
-    private void setColor(Color color) {
-        titlePanel.setBackground(color);
-        viewPanel.setBackground(color);
-    }
-
+    /**
+     * 设置退出方法
+     */
     public void quit() {
         gamePanel.quit();
         System.exit(0);
     }
 
-
+    /**
+     * 获取ToastPanel
+     * @return toastpanel
+     */
     public JPanel getToastPanel() {
         return toastPanel;
     }
 
+    /**
+     * 获取OnlinePanel，并把当前的Panel设置为onlinePanel
+     * @return onlinepanel
+     */
     public OnLinePanel getOnLinePanel() {
         currentPanel = onLinePanel;
         return onLinePanel;
     }
 
-
+    /**
+     * 获取IpConnectPanel，并把当前的Panel设置为IpConnectPanel
+     * @return ipconnectpanel
+     */
     public IpConnectPanel getIpConnectPanel() {
         currentPanel = ipConnectPanel;
         return ipConnectPanel;
     }
-
+    /**
+     * 获取GamePanel，并把当前的Panel设置为GamePane
+     * @return gamepanel
+     */
     public GamePanel getGamePanel() {
         currentPanel = gamePanel;
         return gamePanel;
     }
 
+    /**
+     * 只获取gamepanel
+     * @return gamePanel
+     */
     public GamePanel getGamePanelOnly() {
         return gamePanel;
     }
 
+    /**
+     * 获取现在的界面
+     * @return 当前界面
+     */
     public JPanel getCurrentPanel() {
         return currentPanel;
     }
 
+    /**
+     * 获取MainFrame，主要用于构造Panel
+     * @return mainFrame
+     */
     public static MainFrame getMainFrame() {
         return mainFrame;
     }
 
+    /**
+     * 点击
+     * @param e
+     * 鼠标事件
+     */
     @Override
     public void mousePressed(MouseEvent e) {
         if (e.getSource() == this) {
@@ -209,6 +249,11 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
     @Override
     public void mouseExited(MouseEvent e) {}
 
+    /**
+     * 最小或关闭
+     * @param e
+     * 鼠标事件
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == minimize) {
@@ -218,6 +263,11 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
         }
     }
 
+    /**
+     * 拖动窗口
+     * @param e
+     * 鼠标事件
+     */
     @Override
     public void mouseDragged(MouseEvent e) {
         if (e.getSource() == this) {
