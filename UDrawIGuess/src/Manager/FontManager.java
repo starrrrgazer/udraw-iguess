@@ -52,7 +52,7 @@ public class FontManager {
     }
 
     public Font getHeaderNoticeFont() {
-        return new Font("楷体", Font.PLAIN, 12);
+        return new Font("楷体", Font.PLAIN, 8);
     }
 
     public Font getThreeCountdownFont() {
@@ -76,7 +76,7 @@ public class FontManager {
     }
 
     public Font getToastShowTopicFont() {
-        return new Font("楷体", Font.BOLD, 22);
+        return new Font("楷体", Font.BOLD, 16);
     }
 
     public Font getToastResultPanelFont() {
