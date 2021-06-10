@@ -162,7 +162,7 @@ public class GamePlayThread extends Thread {
 	private ArrayList<String> getTopics() {
 		ArrayList<String> topics = new ArrayList<String>();
 		try {
-			InputStream in = FileControl.getInputStream("file", "topics");
+			InputStream in = FileControl.getInputStream("file", "topics.txt");
 			BufferedReader input = new BufferedReader(new InputStreamReader(in));
 			for (String st = null; (st = input.readLine()) != null;) {
 				topics.add(st);

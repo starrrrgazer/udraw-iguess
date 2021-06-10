@@ -56,7 +56,7 @@ public class FontManager {
     }
 
     public Font getHeaderNoticeFont() {
-        return new Font("Ώ¬Με", Font.PLAIN, 10);
+        return new Font("Ώ¬Με", Font.PLAIN, 8);
     }
 
     public Font getThreeCountdownFont() {
