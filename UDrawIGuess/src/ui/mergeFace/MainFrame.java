@@ -18,7 +18,6 @@ import javax.swing.JPanel;
 import Manager.FontManager;
 import Manager.ImageManager;
 import ui.part.ComponentDropper;
-import ui.part.PaintPanel;
 import ui.part.component.FrameButton;
 
 
@@ -33,6 +32,8 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
     private Point location;
     private Point frameLocation;
 
+    private JPanel toastPanel = new JPanel();
+    private JPanel showPanel = new JPanel();
     private JPanel framePanel = new JPanel() {
         private Image img = ImageManager.getDefaultImageManager().getFrameBg();
         @Override
@@ -61,13 +62,15 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
     private FrameButton close = new FrameButton(FrameButton.Type.CLOSE);
 
     private JPanel currentPanel = null;
-/* 这里需要定义一些panel*/
-//    private PaintPanel paintPanel = new PaintPanel(this);
     private OnLinePanel onLinePanel = new OnLinePanel(this);
+    private IpConnectPanel ipConnectPanel = new IpConnectPanel(this);
+    private GamePanel gamePanel = new GamePanel(this);
+
     private Font titleFont = FontManager.getDefaultFontManager().getTitleFont();
 
     public MainFrame() {
         mainFrame = this;
+
 
         initFrameDecorated();
         initFace();
@@ -94,8 +97,8 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
         });
 
         ComponentDropper.getDefaultDropper().switchPanel(getCurrentPanel(), getOnLinePanel());
-        setColor(new Color(211, 211, 211));
 
+        setColor(new Color(211, 211, 211));
     }
 
     private void initFace() {
@@ -103,10 +106,22 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
         viewPanel.setBounds(0, 30, WIDTH, HEIGHT - 30);
         viewPanel.setBackground(Color.WHITE);
         viewPanel.setLayout(null);
-//        viewPanel.add(paintPanel);
+        viewPanel.add(toastPanel);
+        viewPanel.add(showPanel);
         viewPanel.add(onLinePanel);
+        viewPanel.add(gamePanel);
+        viewPanel.add(ipConnectPanel);
+
+        toastPanel.setBounds(0, 0, WIDTH, HEIGHT - 30);
+        toastPanel.setOpaque(false);
+        toastPanel.setLayout(null);
+        showPanel.setBounds(0, 0, WIDTH, HEIGHT - 30);
+        showPanel.setOpaque(false);
+        showPanel.setLayout(null);
 
         onLinePanel.setBounds(0, -900, WIDTH, HEIGHT - 30);
+        gamePanel.setBounds(0, -900, WIDTH, HEIGHT - 30);
+        ipConnectPanel.setBounds(0, -900, WIDTH, HEIGHT - 30);
     }
 
     private void initFrameDecorated() {
@@ -125,7 +140,6 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
         minimize.setToolTipText("最小化");
         minimize.addMouseListener(this);
 
-
         maximize.setBounds(WIDTH - 70, 0, 29, 15);
         maximize.setToolTipText(null);
         maximize.setEnabled(false);
@@ -133,7 +147,6 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
         close.setBounds(WIDTH - 41, 0, 35, 15);
         close.setToolTipText("关闭");
         close.addMouseListener(this);
-
     }
 
     private void setColor(Color color) {
@@ -142,16 +155,37 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
     }
 
     public void quit() {
+        gamePanel.quit();
         System.exit(0);
     }
 
-    public JPanel getCurrentPanel() {
-        return currentPanel;
+
+    public JPanel getToastPanel() {
+        return toastPanel;
     }
 
     public OnLinePanel getOnLinePanel() {
         currentPanel = onLinePanel;
         return onLinePanel;
+    }
+
+
+    public IpConnectPanel getIpConnectPanel() {
+        currentPanel = ipConnectPanel;
+        return ipConnectPanel;
+    }
+
+    public GamePanel getGamePanel() {
+        currentPanel = gamePanel;
+        return gamePanel;
+    }
+
+    public GamePanel getGamePanelOnly() {
+        return gamePanel;
+    }
+
+    public JPanel getCurrentPanel() {
+        return currentPanel;
     }
 
     public static MainFrame getMainFrame() {
@@ -195,7 +229,6 @@ public class MainFrame extends JFrame implements MouseListener, MouseMotionListe
 
     @Override
     public void mouseMoved(MouseEvent e) {}
-
 
 
 }

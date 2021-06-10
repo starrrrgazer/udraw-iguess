@@ -127,5 +127,64 @@ public class ImageManager {
         return FileControl.getImage("background/board_bg.png");
     }
 
+    private Image getConvexCircleBg() {
+        return FileControl.getImage("background/convex_circle_bg.png");
+    }
+
+    private Image getConcaveCircleBg() {
+        return FileControl.getImage("background/concave_circle_bg.png");
+    }
+
+    public Image getIpConnectBg() {
+        return getConvexBg();
+    }
+
+    public Image getCountdownBg() {
+        return getConcaveCircleBg();
+    }
+
+    public Image getPigmentBg() {
+        return getConcaveMiniBg();
+    }
+
+    public Image getThicknessChosenBg() {
+        return getConcaveMiniBg();
+    }
+
+    public Image getBrushTypeChosenBg() {
+        return getConcaveMiniBg();
+    }
+
+    public Image getCanvasClearBg() {
+        return getConvexMiniBg();
+    }
+
+    public Image getBrushIcon() {
+        return FileControl.getImage("icon/brush.png");
+    }
+
+    public Image getEraserIcon() {
+        return FileControl.getImage("icon/eraser.png");
+    }
+
+    public Image getClearIcon() {
+        return FileControl.getImage("icon/clear.png");
+    }
+
+    public Image[] getCursorIcon() {
+        Image[] cursorIcon = new Image[] {
+                FileControl.getImage("icon/brush.gif"),
+                FileControl.getImage("icon/eraser.gif")
+        };
+        return cursorIcon;
+    }
+
+    public Image getScrollBarBg() {
+        return FileControl.getImage("background/scroll_bar_bg.png");
+    }
+
+    public Image getSpeakingBg() {
+        return FileControl.getImage("background/speaking_bg.png");
+    }
 }
 
