@@ -3,7 +3,7 @@ package socket;
 import ui.mergeFace.GamePanel;
 import ui.mergeFace.MainFrame;
 import ui.part.ComponentDropper;
-import ui.part.HeaderPanel;
+import ui.part.gamepart.HeaderPanel;
 import ui.part.gamepart.Toast;
 
 import java.awt.Color;

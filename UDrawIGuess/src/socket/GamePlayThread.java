@@ -4,7 +4,7 @@ import Manager.FileControl;
 import ui.mergeFace.GamePanel;
 import socket.DataPackage.DataType;
 import ui.mergeFace.MainFrame;
-import ui.part.HeaderPanel;
+import ui.part.gamepart.HeaderPanel;
 import ui.part.gamepart.Toast;
 
 import java.io.BufferedReader;

@@ -1,4 +1,4 @@
-package ui.part;
+package ui.part.gamepart;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -21,6 +21,7 @@ import Manager.ImageManager;
 import socket.Config;
 import socket.GamePlayThread;
 import socket.ServerAction;
+import ui.part.HeadPortraitLabel;
 import ui.part.component.MyButton;
 import ui.part.gamepart.Toast;
 
