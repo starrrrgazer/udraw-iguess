@@ -31,10 +31,6 @@ public class ComponentMover extends Thread {
 		this.targetY = targetY;
 	}
 	
-//	public void setVelocty(float velocty) {
-//		this.velocty = Math.min(1, Math.max(0, velocty));
-//	}
-	
 	private void setLocation(int x, int y) {
 		SwingUtilities.invokeLater(new ComponentRunnable(this.component, x, y) {
 			@Override

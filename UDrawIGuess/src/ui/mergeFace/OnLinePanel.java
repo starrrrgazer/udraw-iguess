@@ -2,13 +2,11 @@ package ui.mergeFace;
 
 import Manager.FontManager;
 import socket.Config;
-import ui.part.ButtonDropper;
 import ui.part.HeadPortraitPanel;
 import ui.part.component.JumpButton;
 import ui.part.component.MyTextField;
 
-import java.awt.Component;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -36,17 +34,18 @@ public class OnLinePanel extends FacePanel {
 		headPortraitPanel.setBounds(100, 80, 600, 300);
 		
 		nickName.setFont(nameConfigLabelFont);
+		nickName.setForeground(Color.WHITE);
 		nickName.setBounds(200, 410, 150, 40);
 		nickNameField.setBounds(300, 415, 300, 30);
 		
 		int temp = (int) ((MainFrame.WIDTH - (JumpButton.WIDTH << 1)) * JumpButton.GOLD_SECTION);
 		newRoom.setBounds(MainFrame.WIDTH - temp - (JumpButton.WIDTH << 1), 475, JumpButton.WIDTH, JumpButton.HEIGHT);
 		joinIn.setBounds(temp + JumpButton.WIDTH, 475, JumpButton.WIDTH, JumpButton.HEIGHT);
-		
+		newRoom.setForeground(Color.WHITE);
+		joinIn.setForeground(Color.WHITE);
+
 		newRoom.addMouseListener(this);
 		joinIn.addMouseListener(this);
-//		LeapManager.getDefaultLeapManager().addLeapListener(newRoom, this);
-//		LeapManager.getDefaultLeapManager().addLeapListener(joinIn, this);
 
 		add(headPortraitPanel);
 		add(nickName);

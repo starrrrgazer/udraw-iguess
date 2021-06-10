@@ -33,6 +33,7 @@ public class Config {
 	
 	/*等待游戏开始*/
 	public static boolean waiting;
-		/*客户头像*/
+
+	/*客户头像*/
 	public static int[] clientHeadPortrait = {0, 0, 0, 0};
 }
