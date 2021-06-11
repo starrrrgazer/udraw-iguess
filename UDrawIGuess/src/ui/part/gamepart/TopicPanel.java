@@ -143,16 +143,7 @@ public class TopicPanel extends ToastPanel implements MouseListener {
 	}
 
 	public void buttonPressed(EventObject e) {
-		BufferedImage bimg = MainFrame.getMainFrame().getGamePanelOnly().getDrawPanel().getBimg();
-		try {
-			if (ImageIO.write(bimg, "JPEG", new File(System.currentTimeMillis() + ".jpg"))) {
-				Toast.getDefaultToast().makeToastNotice("保存成功！", 1000);
-				return;
-			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		Toast.getDefaultToast().makeToastNotice("遇到未知异常，保存失败！", 1000);
+
 	}
 	
 	@Override

@@ -18,7 +18,13 @@ import socket.DataPackage.DataType;
 import ui.part.gamepart.*;
 
 /**
- * 游戏主体的界面
+ * 游戏界面
+ * @see ServerInfoPanel
+ * @see HeaderPanel
+ * @see BrushConfigPanel
+ * @see DrawPanel
+ * @see ScorePanel
+ * @see ChatPanel
  */
 public class GamePanel extends FacePanel {
 	
@@ -70,7 +76,11 @@ public class GamePanel extends FacePanel {
 		setLayout(null);
 		setEnabled(false);
 	}
-	
+
+	/**
+	 * 游戏开始
+	 * @param playing 游戏是否开始,true 开始
+	 */
 	public void gamePlaying(boolean playing) {
 		countDownBeforeDraw(0);
 		brushPanel.initBrush();
@@ -89,6 +99,10 @@ public class GamePanel extends FacePanel {
 		}
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public ServerInfoPanel getInfoPanel() {
 		return infoPanel;
 	}

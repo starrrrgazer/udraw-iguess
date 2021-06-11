@@ -5,6 +5,10 @@ import socket.ClientInfo;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
+/**
+ * 得分信息
+ * @see ScoreLabel
+ */
 public class ScorePanel extends JPanel {
 	
 	private ScoreLabel[] labels = new ScoreLabel[5];

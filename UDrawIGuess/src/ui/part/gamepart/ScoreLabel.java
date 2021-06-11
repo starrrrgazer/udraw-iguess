@@ -11,6 +11,9 @@ import java.awt.image.BufferedImage;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * 头像下面的得分标记
+ */
 public class ScoreLabel extends JPanel {
 	
 	private String progressId;
@@ -21,7 +24,10 @@ public class ScoreLabel extends JPanel {
 	private JLabel scoreLabel = new JLabel("得分：0");
 	
 	private Font scorePanelfont = FontManager.getDefaultFontManager().getScorePanelFont();
-	
+
+	/**
+	 * 默认构造函数
+	 */
 	public ScoreLabel() {
 
 		nameLabel.setFont(scorePanelfont);

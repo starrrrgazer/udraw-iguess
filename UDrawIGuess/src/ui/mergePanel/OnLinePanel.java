@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 
 /**
  * 进入游戏的第一个界面，在这里可以选择头像，填写昵称，选择创建游戏或者加入游戏
+ * @see HeadPortraitPanel
  */
 public class OnLinePanel extends FacePanel {
 	private JLabel chooseHeadPortraitPanel = new JLabel("选择头像：");

@@ -9,6 +9,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+/**
+ * 房间(服务端)信息panel
+ */
 public class ServerInfoPanel extends JPanel {
 	
 	private JLabel roomNameLabel = new JLabel();
@@ -16,7 +19,10 @@ public class ServerInfoPanel extends JPanel {
 	private JLabel roomPortLabel = new JLabel();
 	
 	private Font roomInfoFont = FontManager.getDefaultFontManager().getRoomInfoFont();
-	
+
+	/**
+	 * 构造函数
+	 */
 	public ServerInfoPanel() {		
 		roomIpLabel.setHorizontalAlignment(JLabel.CENTER);
 		roomNameLabel.setFont(roomInfoFont);
@@ -30,6 +36,12 @@ public class ServerInfoPanel extends JPanel {
 		setOpaque(false);
 	}
 
+	/**
+	 * 更新房间信息
+	 * @param roomName 房间名
+	 * @param ip 服务端ip
+	 * @param port 服务端监听的端口
+	 */
 	public void updateInfo(String roomName, String ip, int port) {
 		String myRoomName = "房间名：" + roomName;
 		String myIp = "ip地址：" + ip;
@@ -47,14 +59,5 @@ public class ServerInfoPanel extends JPanel {
 //		roomIpLabel.setBounds(20 + nameLength, 0, width - 40 - nameLength - portLength, height);
 		roomPortLabel.setBounds(width - 20 - portLength, 0, portLength, height);
 	}
-	
-	@Override
-	protected void paintComponent(Graphics g) {
-		int width = getWidth();
-		int height = getHeight();
-		g.setColor(Color.GRAY);
-		for (int i = 0; i < width; i += 20) {
-			g.drawLine(i, height - 1, i + 15, height - 1);
-		}
-	}
+
 }

@@ -21,7 +21,7 @@ public class MyTextField extends JPanel {
 	
 	private JTextField textField;
 	private int offsetX = 6;
-	private int offsetY;
+	private int offsetY = 0;
 	
 	private Font font = FontManager.getDefaultFontManager().getInputFieldFont();
 	private Image img = ImageManager.getDefaultImageManager().getInputFieldBg();

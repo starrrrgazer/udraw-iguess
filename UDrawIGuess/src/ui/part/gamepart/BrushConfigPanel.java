@@ -11,23 +11,26 @@ import socket.Config;
 import socket.DataPackage;
 import socket.ServerAction;
 import ui.mergePanel.MainFrame;
-import ui.part.TypeLabel;
-import ui.part.TypeLabel.Type;
+import ui.part.gamepart.TypeLabel.Type;
 import socket.DataPackage.DataType;
 
+/**
+ * 笔刷信息，选择的工具、颜色和粗细
+ * @see TypeLabel
+ * @see PigmentLabel
+ * @see ThicknessLabel
+ */
 public class BrushConfigPanel extends JPanel implements MouseListener {
-	private enum CircleType { COLOR, THICKNESS, TYPE }
-	private CircleType circleType = CircleType.COLOR;
-	private float progress;
-	private int index;
-	
 	private Color[] colors;
-	private PigmentLabel[] pigmentLabels = new PigmentLabel[14];
+	private PigmentLabel[] pigmentLabels = new PigmentLabel[11];
 	
 	private ThicknessLabel[] thicknessLabels = new ThicknessLabel[5];
 	
 	private TypeLabel[] typeLabels = new TypeLabel[3];
-	
+
+	/**
+	 * 默认构造函数
+	 */
 	public BrushConfigPanel() {		
 		initColors();
 		initThickness();
@@ -36,11 +39,13 @@ public class BrushConfigPanel extends JPanel implements MouseListener {
 		setLayout(null);
 		setOpaque(false);
 	}
-	
+
+	/**
+	 * 初始化颜色数组
+	 */
 	private void initColors() {
 		colors = new Color[] { Color.BLACK, Color.GRAY, Color.LIGHT_GRAY, Color.PINK, Color.MAGENTA,
-				Color.RED, Color.BLUE, Color.ORANGE, Color.CYAN, Color.YELLOW, Color.GREEN,
-				new Color(192, 255, 0), new Color(150, 150, 0), new Color(150, 100, 50) };
+				Color.RED, Color.BLUE, Color.ORANGE, Color.CYAN, Color.YELLOW, Color.GREEN };
 		
 		for (int i = 0; i < pigmentLabels.length; i++) {
 			pigmentLabels[i] = new PigmentLabel(colors[i], i);
@@ -49,7 +54,10 @@ public class BrushConfigPanel extends JPanel implements MouseListener {
 			this.add(pigmentLabels[i]);
 		}
 	}
-	
+
+	/**
+	 * 初始化笔刷粗细数组
+	 */
 	private void initThickness() {
 		for (int i = 0; i < thicknessLabels.length; i++) {
 			thicknessLabels[i] = new ThicknessLabel(i + 1, i);
@@ -58,7 +66,10 @@ public class BrushConfigPanel extends JPanel implements MouseListener {
 			this.add(thicknessLabels[i]);
 		}
 	}
-	
+
+	/**
+	 * 初始化笔刷类型数组
+	 */
 	private void initType() {
 		typeLabels[0] = new TypeLabel(Type.BRUSH, 0);
 		typeLabels[0].setBounds(4, 284, 26, 26);
@@ -75,14 +86,21 @@ public class BrushConfigPanel extends JPanel implements MouseListener {
 		typeLabels[2].addMouseListener(this);
 		this.add(typeLabels[2]);
 	}
-	
+
+	/**
+	 * 初始化笔刷为 笔，黑色，最细
+	 */
 	public void initBrush() {		
 		setPigment(pigmentLabels[0]);
 		setThickness(thicknessLabels[1]);
 		setType(typeLabels[0]);
 		canvasClear();
 	}
-	
+
+	/**
+	 * 设置笔刷颜色
+	 * @param pigmentLabel 选中的笔刷颜色的panel
+	 */
 	public void setPigment(PigmentLabel pigmentLabel) {
 		pigmentLabel.choose();
 		if (TypeLabel.chosen == 0) {
@@ -131,6 +149,10 @@ public class BrushConfigPanel extends JPanel implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {}
 
+	/**
+	 * 鼠标按下事件，判断事件来源，更改笔刷属性
+	 * @param e 鼠标事件
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (!isEnabled()) {

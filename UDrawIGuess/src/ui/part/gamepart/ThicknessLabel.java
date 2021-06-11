@@ -9,29 +9,50 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
-
+/**
+ * 设置笔刷粗细
+ */
 public class ThicknessLabel extends JPanel {
+	/**
+	 * 笔刷粗细是否被选中
+	 */
 	public static int chosen = 1;
 	
 	private int thickness;
 	private int i;
 	
 	private Image chosenBg = ImageManager.getDefaultImageManager().getThicknessChosenBg();
-	
+
+	/**
+	 * 构造函数
+	 * @param thickness 粗细程度
+	 * @param i 选择的笔刷粗细在笔刷数组的索引
+	 */
 	public ThicknessLabel(int thickness, int i) {
 		this.thickness = thickness;
 		this.i = i;
 		setOpaque(false);
 	}
 
+	/**
+	 * 获取笔刷粗细
+	 * @return 笔刷粗细
+	 */
 	public int getThickness() {
 		return thickness;
 	}
-	
+
+	/**
+	 * 设置笔刷粗细被选中
+	 */
 	public void choose() {
 		ThicknessLabel.chosen = i;
 	}
-	
+
+	/**
+	 * 绘制笔刷粗细图片
+	 * @param g Graphics，方法重载
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		int width = getWidth();
