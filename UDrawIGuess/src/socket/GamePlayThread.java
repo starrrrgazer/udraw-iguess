@@ -83,7 +83,7 @@ public class GamePlayThread extends Thread {
 							continue;
 						}
 						painter = client.getInfo();
-						//gamePanel.getHeaderPanel().setNotice(HeaderPanel.NoticeType.SHOW_PAINTER, Config.nickName);
+						gamePanel.getHeaderPanel().setNotice(HeaderPanel.NoticeType.SHOW_PAINTER, Config.nickName);
 						ServerAction.sendData(DataType.PAINTER, painter);
 						ServerAction.sendDataToOne(DataType.TOPIC, topic[0], client);
 					}

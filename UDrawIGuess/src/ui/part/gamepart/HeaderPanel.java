@@ -43,7 +43,7 @@ public class HeaderPanel extends JPanel implements MouseListener {
 			g2d.drawImage(img, countDown.getX(), countDown.getY(), countDown.getWidth(), countDown.getHeight(), this);
 		}
 	};
-	private HeadPortraitLabel headPortrait = new HeadPortraitLabel(0, 10);
+//	private HeadPortraitLabel headPortrait = new HeadPortraitLabel(0, 10);
 	private JLabel roundLabel = new JLabel("第 0 / 0 轮");
 	private JLabel noticeLeft = new JLabel();
 	private JLabel noticeRight = new JLabel();
@@ -71,7 +71,7 @@ public class HeaderPanel extends JPanel implements MouseListener {
 		countDown.setFont(gameTimeFont);
 		countDown.setHorizontalAlignment(JLabel.CENTER);
 		infoPanel.setLayout(null);
-		infoPanel.add(headPortrait);
+//		infoPanel.add(headPortrait);
 		infoPanel.add(roundLabel);
 		infoPanel.add(noticeLeft);
 		infoPanel.add(noticeRight);
@@ -114,10 +114,10 @@ public class HeaderPanel extends JPanel implements MouseListener {
 	 * 显示当前画的人的头像
 	 * @param headPortrait 头像数组的索引
 	 */
-	public void setPainterHeadPortrait(int headPortrait) {
-		BufferedImage img = FileControl.getBufferedImage("avatar/" + (headPortrait + 100 + "").substring(1) + ".jpg");
-		this.headPortrait.setImage(img);
-	}
+//	public void setPainterHeadPortrait(int headPortrait) {
+//		BufferedImage img = FileControl.getBufferedImage("avatar/" + (headPortrait + 100 + "").substring(1) + ".jpg");
+////		this.headPortrait.setImage(img);
+//	}
 
 	/**
 	 * 设置轮数显示
@@ -170,7 +170,7 @@ public class HeaderPanel extends JPanel implements MouseListener {
 		super.setBounds(x, y, width, height);
 		infoPanel.setBounds(0, 0, width, height);
 
-		headPortrait.setBounds(40, 5, 40, 40);
+//		headPortrait.setBounds(40, 5, 40, 40);
 		int roundWidth = SwingUtilities.computeStringWidth(getFontMetrics(headerNoticeFont), roundLabel.getText());
 		roundLabel.setBounds(width - roundWidth >> 1, 5, roundWidth, 20);
 		countDown.setBounds(width - 35 - height, 5, height - 10, height - 10);
