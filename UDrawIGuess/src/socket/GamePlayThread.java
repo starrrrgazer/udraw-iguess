@@ -83,11 +83,12 @@ public class GamePlayThread extends Thread {
 							continue;
 						}
 						painter = client.getInfo();
-						gamePanel.getHeaderPanel().setNotice(HeaderPanel.NoticeType.SHOW_PAINTER, Config.nickName);
+						//gamePanel.getHeaderPanel().setNotice(HeaderPanel.NoticeType.SHOW_PAINTER, Config.nickName);
 						ServerAction.sendData(DataType.PAINTER, painter);
 						ServerAction.sendDataToOne(DataType.TOPIC, topic[0], client);
 					}
-					gamePanel.getHeaderPanel().setPainterHeadPortrait(painter.getHeadPortrait());
+					System.out.println(painter.getHeadPortrait());
+					//gamePanel.getHeaderPanel().setPainterHeadPortrait(painter.getHeadPortrait());
 					gamePanel.getScorePanel().setPainter(painter);
 					
 					initGuessStatus();

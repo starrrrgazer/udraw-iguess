@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * 数据交互的类型类
+ * @see ClientInfo
  */
 public class DataPackage implements Serializable {
 	/**

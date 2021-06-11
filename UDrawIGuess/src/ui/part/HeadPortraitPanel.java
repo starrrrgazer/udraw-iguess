@@ -10,10 +10,6 @@ import javax.swing.JPanel;
 
 public class HeadPortraitPanel extends JPanel implements MouseListener {
 	
-	private int index;
-	private float progress;
-	private long frame;
-	
 	private HeadPortraitLabel chosen;
 	private HeadPortraitLabel chooser;
 	private HeadPortraitLabel[] headPortraits = new HeadPortraitLabel[14];

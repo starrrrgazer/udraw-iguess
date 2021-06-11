@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import socket.DataPackage;
 
 /**
  * 客户端的线程类，加入游戏后创建

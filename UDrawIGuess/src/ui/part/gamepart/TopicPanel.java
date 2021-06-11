@@ -12,12 +12,7 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.RoundRectangle2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.EventObject;
-
-import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
@@ -132,13 +127,6 @@ public class TopicPanel extends ToastPanel implements MouseListener {
 
 		g2d.setColor(mainColor);
 		g2d.fill(rect);
-		g2d.setClip(rect);
-		g2d.setColor(darkColor);
-		g2d.fillRect(0, height - bottomHeight, width, bottomHeight);
-		g2d.setColor(lightColor);
-		g2d.drawLine(0, height - bottomHeight, width, height - bottomHeight);
-
-		g2d.setClip(null);
 		g2d.setColor(oldColor);
 	}
 
