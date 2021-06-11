@@ -5,7 +5,7 @@ import Manager.FontManager;
 import socket.DesaturateFilter;
 import ui.part.HeadPortraitLabel;
 
-import java.awt.Font;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JLabel;
@@ -21,7 +21,7 @@ public class ScoreLabel extends JPanel {
 	private HeadPortraitLabel headPortraitLabel = new HeadPortraitLabel(0);
 	private JLabel painterLabel = new JLabel();
 	private JLabel guessedLabel = new JLabel();
-	private JLabel scoreLabel = new JLabel("得分：0");
+	private JLabel scoreLabel = new JLabel("0");
 	
 	private Font scorePanelfont = FontManager.getDefaultFontManager().getScorePanelFont();
 
@@ -56,6 +56,7 @@ public class ScoreLabel extends JPanel {
 		painterLabel.setBounds(width - height + 34 >> 1, 17, height - 34, height - 34);
 		guessedLabel.setBounds(width - height + 32 >> 1, 16, height - 32, height - 32);
 		scoreLabel.setBounds(0, height - 20, width, 20);
+		scoreLabel.setForeground(Color.CYAN);
 	}
 	
 	public void setClient(String progressId, String name, int headPortrait) {
@@ -70,7 +71,7 @@ public class ScoreLabel extends JPanel {
 	
 	public void addScore(int score) {
 		int currentScore = getScore();
-		scoreLabel.setText("得分：" + currentScore + score + "");
+		scoreLabel.setText(currentScore + score + "");
 	}
 	
 	public void lostConnection() {
@@ -98,7 +99,7 @@ public class ScoreLabel extends JPanel {
 	}
 	
 	public int getScore() {
-		return Integer.parseInt(scoreLabel.getText().substring(3));
+		return Integer.parseInt(scoreLabel.getText());
 	}
 	
 	public String getProgressId() {
