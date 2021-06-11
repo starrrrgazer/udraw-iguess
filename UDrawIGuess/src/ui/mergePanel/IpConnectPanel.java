@@ -6,8 +6,8 @@ import socket.ClientAction;
 import socket.Config;
 import ui.part.ButtonDropper;
 import ui.part.gamepart.Toast;
-import ui.part.component.JumpButton;
-import ui.part.component.MyTextField;
+import ui.part.JumpButton;
+import ui.part.MyTextField;
 
 import java.awt.Component;
 import java.awt.Font;

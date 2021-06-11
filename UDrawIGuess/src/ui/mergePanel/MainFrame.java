@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import Manager.FontManager;
 import Manager.ImageManager;
 import ui.part.ComponentDropper;
-import ui.part.component.FrameButton;
+import ui.part.FrameButton;
 
 /**
  * 这是程序的主要的Frame，其他界面都是作为Panel显示在里面

@@ -25,8 +25,7 @@ import socket.Config;
 import socket.GamePlayThread;
 import socket.ServerAction;
 import ui.mergePanel.MainFrame;
-import ui.part.component.MyButton;
-import ui.part.component.MyTextField;
+import ui.part.MyTextField;
 import socket.DataPackage.DataType;
 
 

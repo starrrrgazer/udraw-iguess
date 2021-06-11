@@ -13,7 +13,7 @@ import socket.Config;
 import socket.ServerAction;
 import socket.TCPServerThread;
 import ui.part.*;
-import ui.part.component.JumpButton;
+import ui.part.JumpButton;
 import socket.DataPackage.DataType;
 import ui.part.gamepart.*;
 

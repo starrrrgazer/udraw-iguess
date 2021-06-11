@@ -5,8 +5,8 @@ import socket.Config;
 import socket.TCPServerThread;
 import ui.part.ButtonDropper;
 import ui.part.HeadPortraitPanel;
-import ui.part.component.JumpButton;
-import ui.part.component.MyTextField;
+import ui.part.JumpButton;
+import ui.part.MyTextField;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
