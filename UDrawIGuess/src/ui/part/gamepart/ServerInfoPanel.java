@@ -46,18 +46,18 @@ public class ServerInfoPanel extends JPanel {
 		String myRoomName = "房间名：" + roomName;
 		String myIp = "ip地址：" + ip;
 		String myPort = "端口号：" + port;
-		roomNameLabel.setText(myRoomName);
+//		roomNameLabel.setText(myRoomName);
 //		roomIpLabel.setText(myIp);
 		roomPortLabel.setText(myPort);
 		
 		int width = getWidth();
 		int height = getHeight();
-		int nameLength = SwingUtilities.computeStringWidth(getFontMetrics(roomInfoFont), myRoomName);
+//		int nameLength = SwingUtilities.computeStringWidth(getFontMetrics(roomInfoFont), myRoomName);
 		int portLength = SwingUtilities.computeStringWidth(getFontMetrics(roomInfoFont), myPort);
 
-		roomNameLabel.setBounds(20, 0, nameLength, height);
+//		roomNameLabel.setBounds(20, 0, nameLength, height);
 //		roomIpLabel.setBounds(20 + nameLength, 0, width - 40 - nameLength - portLength, height);
-		roomPortLabel.setBounds(width - 20 - portLength, 0, portLength, height);
+		roomPortLabel.setBounds(20, 0, portLength, height);
 	}
 
 }

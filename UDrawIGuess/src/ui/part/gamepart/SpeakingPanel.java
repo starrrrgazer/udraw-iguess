@@ -38,32 +38,9 @@ public class SpeakingPanel extends ToastPanel {
 		if (isAddScore) {
 			this.speaking.setFont(addScoreFont);
 			this.speaking.setForeground(Color.RED);
-			FontMetrics fm = getFontMetrics(addScoreFont);
-			int speakingWidth = SwingUtilities.computeStringWidth(fm, speaking);
-			int speakingHeight = fm.getHeight();
-			width += speakingWidth - labelWidth;
-			labelWidth = speakingWidth;
-			height += speakingHeight - labelHeight;
-			labelHeight = speakingHeight;
 			this.speaking.setText(speaking);
 		} else {
-			byte[] speaking_b = speaking.getBytes();
-			int length = speaking_b.length;
-			if (length < 12) {
-				int speakingWidth = SwingUtilities.computeStringWidth(getFontMetrics(getFont()), speaking);
-				width += speakingWidth - labelWidth;
-				labelWidth = speakingWidth;
-				height += (labelHeight >> 1) - labelHeight;
-				labelHeight >>= 1;
-			} else if (length > 19) {
-				byte[] speaking_short_b = new byte[19];
-				for (int i = 0; i < speaking_short_b.length; i++) {
-					speaking_short_b[i] = speaking_b[i];
-				}
-				String speaking_short = new String(speaking_short_b);
-				speaking = speaking_short.substring(0, speaking_short.length() - 2) + "...";
-			}
-			this.speaking.setText("<html>" + speaking + "</html>");
+			this.speaking.setText( speaking);
 		}
 
 		this.speaking.setHorizontalAlignment(JLabel.CENTER);
