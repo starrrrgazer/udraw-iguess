@@ -43,7 +43,7 @@ public class HeaderPanel extends JPanel implements MouseListener {
 			g2d.drawImage(img, countDown.getX(), countDown.getY(), countDown.getWidth(), countDown.getHeight(), this);
 		}
 	};
-//	private HeadPortraitLabel headPortrait = new HeadPortraitLabel(0, 10);
+	private HeadPortraitLabel headPortrait = new HeadPortraitLabel(0, 10);
 	private JLabel roundLabel = new JLabel("µÚ 0 / 0 ÂÖ");
 	private JLabel noticeLeft = new JLabel();
 	private JLabel noticeRight = new JLabel();
@@ -62,7 +62,7 @@ public class HeaderPanel extends JPanel implements MouseListener {
 	 */
 	public HeaderPanel() {
 		
-		startGame.setForeground(new Color(1 << 6, 0, 0));
+		startGame.setForeground(new Color(128, 0, 0));
 		noticeRight.setForeground(Color.RED);
 		noticeLabel.setFont(headerNoticeFont);
 		roundLabel.setFont(headerNoticeFont);
@@ -71,7 +71,8 @@ public class HeaderPanel extends JPanel implements MouseListener {
 		countDown.setFont(gameTimeFont);
 		countDown.setHorizontalAlignment(JLabel.CENTER);
 		infoPanel.setLayout(null);
-//		infoPanel.add(headPortrait);
+		infoPanel.add(headPortrait);
+		headPortrait.setVisible(false);
 		infoPanel.add(roundLabel);
 		infoPanel.add(noticeLeft);
 		infoPanel.add(noticeRight);

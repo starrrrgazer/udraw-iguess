@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
+import ui.part.gamepart.HeaderPanel.NoticeType;
 /**
  * 游戏线程类
  */
@@ -52,6 +52,7 @@ public class GamePlayThread extends Thread {
 			
 			GamePanel gamePanel = MainFrame.getMainFrame().getGamePanelOnly();
 			gamePanel.gamePlaying(true);
+			//56
 			ServerAction.sendData(DataType.GAME_PLAYING, true);
 
 			for (int round = 0; Config.serving && round < roundTotal; round++) {
@@ -75,7 +76,7 @@ public class GamePlayThread extends Thread {
 					ClientInfo painter;
 					if (painterN == 0) {
 						painter = new ClientInfo(Config.progressId, Config.nickName, Config.headPortrait);
-						gamePanel.getHeaderPanel().setNotice(HeaderPanel.NoticeType.SHOW_TOPIC, topic[0]);
+						gamePanel.getHeaderPanel().setNotice(NoticeType.SHOW_TOPIC, topic[0]);
 						ServerAction.sendData(DataType.PAINTER, painter);
 					} else {
 						client = clientList.get(painterN - 1);
@@ -83,12 +84,13 @@ public class GamePlayThread extends Thread {
 							continue;
 						}
 						painter = client.getInfo();
-						gamePanel.getHeaderPanel().setNotice(HeaderPanel.NoticeType.SHOW_PAINTER, Config.nickName);
+						//87
+						gamePanel.getHeaderPanel().setNotice(NoticeType.SHOW_PAINTER, Config.nickName);
 						ServerAction.sendData(DataType.PAINTER, painter);
 						ServerAction.sendDataToOne(DataType.TOPIC, topic[0], client);
 					}
-					System.out.println(painter.getHeadPortrait());
-					//gamePanel.getHeaderPanel().setPainterHeadPortrait(painter.getHeadPortrait());
+//					System.out.println(painter.getHeadPortrait());
+//					gamePanel.getHeaderPanel().setPainterHeadPortrait(painter.getHeadPortrait());
 					gamePanel.getScorePanel().setPainter(painter);
 					
 					initGuessStatus();
@@ -145,7 +147,7 @@ public class GamePlayThread extends Thread {
 							}
 						}
 						try {
-							Thread.sleep(1000);
+							Thread.sleep(100);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
