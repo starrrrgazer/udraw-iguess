@@ -89,7 +89,7 @@ public class ClientAction extends Thread {
 				case PAINTER:
 					ClientInfo painter = (ClientInfo) dtpg.getData();
 					if (Config.progressId.equals(painter.getProgressId())) {
-						gamePanel.getHeaderPanel().setNotice(HeaderPanel.NoticeType.SHOW_PAINTER, painter.getNickName());
+//						gamePanel.getHeaderPanel().setNotice(HeaderPanel.NoticeType.SHOW_PAINTER, painter.getNickName());
 //						gamePanel.getHeaderPanel().setPainterHeadPortrait(painter.getHeadPortrait());
 					}
 					gamePanel.getScorePanel().setPainter(painter);
