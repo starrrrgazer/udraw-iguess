@@ -31,7 +31,13 @@ import ui.part.component.FrameButton;
 public class MainFrame extends JFrame implements MouseListener, MouseMotionListener {
     private static MainFrame mainFrame;
 
+    /**
+     * mainFrame的宽度
+     */
     public static final int WIDTH = 800;
+    /**
+     * mainFrame的高度
+     */
     public static final int HEIGHT = 600;
 
     private Point location;

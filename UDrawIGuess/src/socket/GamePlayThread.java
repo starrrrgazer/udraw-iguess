@@ -13,8 +13,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-
+/**
+ * 游戏线程类
+ */
 public class GamePlayThread extends Thread {
+	/**
+	 * 游戏的总轮数
+	 */
 	public static int roundTotal = 2;
 	
 	private final int countDownTime = 3;
@@ -27,7 +32,10 @@ public class GamePlayThread extends Thread {
 	private static boolean guessable;
 	private static ArrayList<Integer> guessStatus;
 	private static int losterCount;
-	
+
+	/**
+	 * 游戏线程的运行方法
+	 */
 	@Override
 	public void run() {
 
@@ -201,7 +209,11 @@ public class GamePlayThread extends Thread {
 		}
 		return true;
 	}
-	
+
+	/**
+	 * 客户端断开连接时，更新状态
+	 * @param clientIndex 断开连接的客户端在客户端列表的索引
+	 */
 	public static void lostConnection(int clientIndex) {
 		if (guessStatus.get(clientIndex) == 2) {
 			guessStatus.set(clientIndex, -2);
@@ -211,7 +223,13 @@ public class GamePlayThread extends Thread {
 			losterCount++;
 		}
 	}
-	
+
+	/**
+	 * 判断答案是否正确
+	 * @param answer 客户端发的答案
+	 * @param clientIndex 客户端在客户端列表的索引
+	 * @return 答案是否正确的列表
+	 */
 	public static ArrayList<Integer> checkAnswer(String answer, int clientIndex) {
 		if (guessable && answer.equals(topic[0])) {
 			synchronized (guessStatus) {

@@ -11,17 +11,30 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 
-
+/**
+ * 服务端的线程类
+ * @see Client
+ * @see DataPackage
+ */
 public class ServerAction extends Thread {
 	
 	private static ArrayList<Client> clientList = new ArrayList<Client>();
 	
 	private Client client;
-	
+
+	/**
+	 * 构造函数,创立一个监听某一客户端的线程
+	 * @param client 客户端的socket
+	 */
 	public ServerAction(Client client) {
 		this.client = client;
 	}
-	
+
+	/**
+	 * 服务端的运行方法，
+	 * 根据数据类型不同，执行不同操作
+	 * @see DataPackage
+	 */
 	public void run() {
 		GamePanel gamePanel = MainFrame.getMainFrame().getGamePanelOnly();
 		while (!client.isClosed()) {
@@ -78,23 +91,35 @@ public class ServerAction extends Thread {
 			}
 		}
 	}
-	
+
+	/**
+	 * 连接到当前服务端的客户端的列表
+	 * @return 已连接的客户端的列表
+	 */
 	public static ArrayList<Client> getClientList() {
 		return clientList;
 	}
-	
+
+	/**
+	 * 客户端连接
+	 * @param socket 监听到的客户端的socket
+	 */
 	public static void clientConnect(Socket socket) {
 		Client client = new Client(socket);
 		ServerAction.addClient(client);
 	}
-	
+
 	private static void addClient(Client client) {
 		synchronized (clientList) {
 			clientList.add(client);
 			new ServerAction(client).start();
 		}
 	}
-	
+
+	/**
+	 * 拒绝客户端的连接
+	 * @param client 监听到的客户端
+	 */
 	public static void connectionRefuse(Client client) {
 		synchronized (clientList) {
 			String message = Config.waiting ? "该房间已开始游戏，请在游戏结束后加入。" : "该房间人数已满，请稍后加入。";
@@ -103,7 +128,13 @@ public class ServerAction extends Thread {
 			clientList.remove(client);
 		}
 	}
-	
+
+	/**
+	 * 接受客户端的连接
+	 * @param client 监听到的客户端
+	 * @param dtpg	打包好的数据
+	 * @see DataPackage
+	 */
 	public static void connectionAccept(Client client, DataPackage dtpg) {
 		ClientInfo clientInfo = (ClientInfo) dtpg.getData();
 		client.setInfo(clientInfo);
@@ -112,7 +143,10 @@ public class ServerAction extends Thread {
 		sendData(DataType.SYSTEM_MESSAGE, clientInfo.getNickName() + "加入了游戏。");
 		updatePlayers();
 	}
-	
+
+	/**
+	 * 更新已连接的客户端
+	 */
 	public static void updatePlayers() {
 		ArrayList<ClientInfo> playerInfos = new ArrayList<ClientInfo>();
 		for (int i = clientList.size() - 1; i >= 0; i--) {
@@ -129,21 +163,44 @@ public class ServerAction extends Thread {
 		sendData(DataType.CLIENT_LIST, playerInfos);
 	}
 
+	/**
+	 * 打包数据，并且发送给客户端
+	 * @param type 数据类型
+	 * @param data 数据内容
+	 * @see DataPackage
+	 * @see ClientInfo
+	 */
 	public static void sendData(DataType type, Object data) {
 		DataPackage dp = new DataPackage(type, data);
 		sendDataPackage(dp);
 	}
 
+	/**
+	 * 服务端接收到某客户端的数据后，发送数据给其他客户端
+	 * @param type 数据类型
+	 * @param data 数据内容
+	 * @param exceptedClient 被排除的客户端
+	 */
 	public static void sendDataExceptOne(DataType type, Object data, Client exceptedClient) {
 		DataPackage dp = new DataPackage(type, data);
 		sendDataPackageExceptOne(dp, exceptedClient);
 	}
 
+	/**
+	 * 发送数据给一个客户端
+	 * @param type 数据类型
+	 * @param data 数据内容
+	 * @param specifiedClient 接收数据的客户端
+	 */
 	public static void sendDataToOne(DataType type, Object data, Client specifiedClient) {
 		DataPackage dp = new DataPackage(type, data);
 		sendDataPackageToOne(dp, specifiedClient);
 	}
 
+	/**
+	 * 发送打包好的数据给已连接的客户端
+	 * @param dp 打包好的数据
+	 */
 	public static void sendDataPackage(DataPackage dp) {
 		for (int i = clientList.size() - 1; i >= 0; i--) {
 			Client client = clientList.get(i);
@@ -151,6 +208,11 @@ public class ServerAction extends Thread {
 		}
 	}
 
+	/**
+	 * 服务端接收到某客户端的数据后，发送打包好的数据给其他客户端
+	 * @param dp 打包好的数据
+	 * @param exceptedClient 被排除的客户端
+	 */
 	public static void sendDataPackageExceptOne(DataPackage dp, Client exceptedClient) {
 		for (int i = clientList.size() - 1; i >= 0 && clientList.get(i) != exceptedClient; i--) {
 			Client client = clientList.get(i);
@@ -158,6 +220,11 @@ public class ServerAction extends Thread {
 		}
 	}
 
+	/**
+	 * 发送打包好的数据给客户端
+	 * @param dp 打包好的数据
+	 * @param specifiedClient 接收数据的客户端
+	 */
 	public static void sendDataPackageToOne(DataPackage dp, Client specifiedClient) {
 		try {
 			if (!specifiedClient.isClosed()) {
@@ -186,13 +253,19 @@ public class ServerAction extends Thread {
 			}
 		}
 	}
-	
+
+	/**
+	 * 关闭服务端
+	 */
 	public static void close() {
 		for (Client client : clientList) {
 			client.close();
 		}
 	}
-	
+
+	/**
+	 * 清空已连接的客户端
+	 */
 	public static void clientListClear() {
 		synchronized (clientList) {
 			clientList.clear();

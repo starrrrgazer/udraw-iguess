@@ -13,10 +13,20 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
+/**
+ * 客户端的线程类，加入游戏后创建
+ * @see Client
+ * @see ClientInfo
+ */
 public class ClientAction extends Thread {
 	
 	private static Client client;
-	
+
+	/**
+	 * 构造函数。
+	 * 新建一个连接到服务端的socket
+	 * @see Client
+	 */
 	public ClientAction() {
 		try {
 			Socket socket = new Socket(Config.ip, Config.port);
@@ -27,7 +37,14 @@ public class ClientAction extends Thread {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * 线程的运行方法
+	 * 发送登录信息后，等待服务端的信息
+	 * 根据收到消息的不同，执行不同命令
+	 * @see DataPackage
+	 * @see ClientInfo
+	 */
 	public void run() {
 		ClientInfo clientInfo = new ClientInfo(Config.progressId, Config.nickName, Config.headPortrait);
 		DataPackage dp = new DataPackage(DataPackage.DataType.LOGIN, clientInfo);
@@ -131,7 +148,13 @@ public class ClientAction extends Thread {
 			}
 		}
 	}
-	
+
+	/**
+	 * 客户端的退出房间的方法
+	 * 从游戏界面退回到登入界面
+	 * @param message 
+	 * 退出房间时显示的信息，包括“”和“房主已经解散了游戏”和“与房间失去了连接”
+	 */
 	public static void logout(String message) {
 		Toast.getDefaultToast().makeToastClear();
 		Toast.getDefaultToast().makeToastNotice(message, 1000);
@@ -140,11 +163,24 @@ public class ClientAction extends Thread {
 		close();
 	}
 
+	/**
+	 * 打包需要发送的数据,并发送给服务端
+	 * @param type 数据的类型，参考Datapackage.Datatype
+	 * @param data 数据内容，参考clientinfo
+	 * @see DataPackage
+	 * @see ClientInfo
+	 * @see ClientAction#sendDataPackage(DataPackage) 
+	 */
 	public static void sendData(DataPackage.DataType type, Object data) {
 		DataPackage dp = new DataPackage(type, data);
 		sendDataPackage(dp);
 	}
-	
+
+	/**
+	 * 发送数据给服务端
+	 * @param dp 已经打包好的数据
+	 * @see ClientAction#sendData(DataPackage.DataType, Object)    
+	 */
 	public static void sendDataPackage(DataPackage dp) {
 		if (client != null && !client.isClosed()) {
 			try {
@@ -154,7 +190,10 @@ public class ClientAction extends Thread {
 			}
 		}
 	}
-	
+
+	/**
+	 * 关闭客户端
+	 */
 	public static void close() {
 		if (client != null) {
 			client.close();

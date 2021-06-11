@@ -18,6 +18,9 @@ import javax.swing.JPanel;
  */
 public abstract class FacePanel extends JPanel implements MouseListener {
 
+	/**
+	 * panel的所有者
+	 */
 	protected MainFrame owner;
 	private Image img = ImageManager.getDefaultImageManager().getBoardBg();
 

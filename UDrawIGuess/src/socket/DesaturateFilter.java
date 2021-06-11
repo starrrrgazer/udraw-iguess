@@ -2,8 +2,16 @@ package socket;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * 客户端断开连接后，改变头像颜色
+ */
 public class DesaturateFilter {
-	
+
+	/**
+	 * 获取客户端头像，并且改变头像颜色
+	 * @param src 客户端的头像图片
+	 * @return 已经修改变色的客户端头像图片
+	 */
 	public static BufferedImage filter(BufferedImage src) {
 		int width = src.getWidth();
 		int height = src.getHeight();

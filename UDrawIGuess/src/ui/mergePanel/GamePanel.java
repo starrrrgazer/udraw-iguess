@@ -34,7 +34,12 @@ public class GamePanel extends FacePanel {
 	private JumpButton back = new JumpButton("离 开");
 	
 	private Font countdownFont = FontManager.getDefaultFontManager().getThreeCountdownFont();
-	
+
+	/**
+	 * 构造函数
+	 * @param owner
+	 * gamepanel的所有者，即mainframe
+	 */
 	public GamePanel(MainFrame owner) {
 		super(owner);
 		

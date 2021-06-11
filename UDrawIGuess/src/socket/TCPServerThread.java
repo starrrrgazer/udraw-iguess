@@ -9,8 +9,16 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+/**
+ * 服务端构建类，“创建游戏”后创建
+ * @see ServerAction
+ */
 public class TCPServerThread extends Thread {
-	
+	/**
+	 * 线程运行方法，建立一个监听config的端口的服务端，离开房间后关闭服务端
+	 * @see Config
+	 * @see ServerAction
+	 */
 	public void run() {
 		Config.serving = true;
 		Config.waiting = true;
@@ -37,7 +45,12 @@ public class TCPServerThread extends Thread {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * 初始化服务端
+	 * @return 服务端socket
+	 * @see Config
+	 */
 	public ServerSocket initServerSocket() {
 		Config.port = Config.udpPort;
 		while (true) {
@@ -53,13 +66,16 @@ public class TCPServerThread extends Thread {
 			}
 		}
 	}
-	
+
 	private void initGamePanelHeader() {		
 		GamePanel gamePanel = MainFrame.getMainFrame().getGamePanelOnly();
 		gamePanel.getInfoPanel().updateInfo(Config.nickName + "的房间", Config.ip, Config.port);
 		gamePanel.getHeaderPanel().gameWaiting();
 	}
-	
+
+	/**
+	 * 关闭服务端
+	 */
 	public static void closeServer() {
 		new Thread() {
 			public void run() {
