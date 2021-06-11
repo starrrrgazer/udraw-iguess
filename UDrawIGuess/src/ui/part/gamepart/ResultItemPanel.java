@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+/**
+ * 游戏结束信息内容
+ */
 public class ResultItemPanel extends JPanel {
 
 	private JLabel scoreLabel1 = new JLabel();
@@ -21,7 +24,11 @@ public class ResultItemPanel extends JPanel {
 	private FontManager fontManager = FontManager.getDefaultFontManager();
 	private Font toastResultSocreFont = fontManager.getToastResultScoreFont();
 	private Font toastResultPanelFont = fontManager.getToastResultPanelFont();
-	
+
+	/**
+	 * 构造函数
+	 * @param label
+	 */
 	public ResultItemPanel(ScoreLabel label) {
 		
 		initContent(label);
@@ -65,7 +72,14 @@ public class ResultItemPanel extends JPanel {
 		int nickNameWidth = SwingUtilities.computeStringWidth(defaultFontMetrics, this.nickName.getText());
 		this.nickName.setBounds(60 + scoreLabel1Width + scoreLabel2Width + headPortraitWidth, lineHeight - defaultFontHeight >> 1, nickNameWidth, defaultFontHeight);
 	}
-	
+
+	/**
+	 * 设置位置和大小
+	 * @param x 水平偏移量
+	 * @param y 垂直偏移量
+	 * @param width 宽度
+	 * @param height 高度
+	 */
 	@Override
 	public void setBounds(int x, int y, int width, int height) {
 		super.setBounds(x, y, width, height);

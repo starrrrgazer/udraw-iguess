@@ -12,7 +12,10 @@ import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.SwingUtilities;
 
-
+/**
+ * 提示信息
+ * @see ToastPanel
+ */
 public class NoticePanel extends ToastPanel {
 	private final int offsetX = 10;
 	private final int offsetY = 3;
@@ -26,7 +29,12 @@ public class NoticePanel extends ToastPanel {
 	private String message;
 	
 	private Font toastNoticeFont = FontManager.getDefaultFontManager().getToastNoticeFont();
-	
+
+	/**
+	 * 构造函数
+	 * @param message 提示信息内容
+	 * @param duration 显示时长
+	 */
 	public NoticePanel(String message, int duration) {
 		setMessage(message);
 		setTime(System.currentTimeMillis(), duration);
@@ -59,11 +67,19 @@ public class NoticePanel extends ToastPanel {
 		});
 	}
 
+	/**
+	 * 方法重载
+	 * @return
+	 */
 	@Override
 	public long getEndTime() {
 		return endTime;
 	}
 
+	/**
+	 * 方法重载
+	 * @param currentTime 当前的时间
+	 */
 	@Override
 	public void onShow(long currentTime) {
 		int alphaTemp;
@@ -74,7 +90,11 @@ public class NoticePanel extends ToastPanel {
 		}
 		setAlpha(alphaTemp);
 	}
-	
+
+	/**
+	 * 绘制提示信息
+	 * @param g Graphics，方法重载
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		int width = getWidth();

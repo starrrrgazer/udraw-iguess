@@ -1,8 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="UDrawIGuess:jar">
-    <output-path>$PROJECT_DIR$/../../../2021JAVAjar</output-path>
-    <root id="archive" name="UDrawIGuess.jar">
-      <element id="module-output" name="UDrawIGuess" />
+  <artifact name="UDrawIGuess:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/UDrawIGuess_jar</output-path>
+    <root id="root">
+      <element id="archive" name="UDrawIGuess.jar">
+        <element id="module-output" name="UDrawIGuess" />
+      </element>
     </root>
   </artifact>
 </component>

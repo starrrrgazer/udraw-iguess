@@ -46,7 +46,14 @@ public class ScoreLabel extends JPanel {
 		setLayout(null);
 		setOpaque(false);
 	}
-	
+
+	/**
+	 * 设置位置和大小
+	 * @param x 水平偏移量
+	 * @param y 垂直偏移量
+	 * @param width 宽度
+	 * @param height 高度
+	 */
 	@Override
 	public void setBounds(int x, int y, int width, int height) {
 		super.setBounds(x, y, width, height);
@@ -58,50 +65,95 @@ public class ScoreLabel extends JPanel {
 		scoreLabel.setBounds(0, height - 20, width, 20);
 		scoreLabel.setForeground(Color.CYAN);
 	}
-	
+
+	/**
+	 * 设置玩家的头像和昵称
+	 * @param progressId 玩家的进程id
+	 * @param name 玩家的昵称
+	 * @param headPortrait 玩家的头像在头像数组的索引
+	 */
 	public void setClient(String progressId, String name, int headPortrait) {
 		this.progressId = progressId;
 		nameLabel.setText(name);
 		headPortraitLabel.setImage(FileControl.getBufferedImage("avatar/" + (headPortrait + 100 + "").substring(1) + ".jpg"));
 	}
-	
+
+	/**
+	 * 初始化各个玩家的得分
+	 * @param value 得分
+	 */
 	public void initScore(String value) {
 		scoreLabel.setText(value);
 	}
-	
+
+	/**
+	 * 给各个玩家加分
+	 * @param score 加的分值
+	 */
 	public void addScore(int score) {
 		int currentScore = getScore();
 		scoreLabel.setText(currentScore + score + "");
 	}
-	
+
+	/**
+	 * 玩家断开连接的处理函数
+	 */
 	public void lostConnection() {
 		headPortraitLabel.setImage(DesaturateFilter.filter(headPortraitLabel.getImage()));
 	}
-	
+
+	/**
+	 * 当前玩家是不是绘画者
+	 * @param isPainter
+	 */
 	public void setPainter(boolean isPainter) {
 		painterLabel.setVisible(isPainter);
 	}
-	
+
+	/**
+	 * 玩家是否猜对
+	 * @param guessed true猜对
+	 */
 	public void guessed(boolean guessed) {
 		guessedLabel.setVisible(guessed);
 	}
-	
+
+	/**
+	 * 根据是否猜对进行显示或隐藏
+	 * @return label的显示或隐藏，也就是玩家猜的结果是否正确
+	 */
 	public boolean isGuessed() {
 		return guessedLabel.isVisible();
 	}
-	
+
+	/**
+	 * 获取玩家的昵称
+	 * @return
+	 */
 	public String getNickName() {
 		return nameLabel.getText();
 	}
-	
+
+	/**
+	 * 获取玩家的头像
+	 * @return 玩家的头像图片
+	 */
 	public BufferedImage getHeadPortrait() {
 		return headPortraitLabel.getImage();
 	}
-	
+
+	/**
+	 * 获取玩家的得分
+	 * @return 玩家的得分
+	 */
 	public int getScore() {
 		return Integer.parseInt(scoreLabel.getText());
 	}
-	
+
+	/**
+	 * 获取玩家的进程id
+	 * @return 玩家的进程id
+	 */
 	public String getProgressId() {
 		return progressId;
 	}

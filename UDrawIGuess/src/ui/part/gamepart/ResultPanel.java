@@ -16,6 +16,10 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
+/**
+ * 全部游戏结束的信息显示
+ * @see ToastPanel
+ */
 public class ResultPanel extends ToastPanel {
 	
 	private final int arc = 5;
@@ -23,7 +27,7 @@ public class ResultPanel extends ToastPanel {
 	private final int offsetHeight = 30;
 	private final int lineHeight = 50;
 	private final int width = 320;
-	private int height = lineHeight * Config.maximum + lineHeight + offsetHeight + offsetHeight;
+	private int height;
 	
 	private long endTime;
 
@@ -35,6 +39,10 @@ public class ResultPanel extends ToastPanel {
 	
 	private Font toastResultPanelFont = FontManager.getDefaultFontManager().getToastResultPanelFont();
 
+	/**
+	 * 构造函数
+	 * @param duration 显示时长
+	 */
 	public ResultPanel(int duration) {
 		
 		setTime(System.currentTimeMillis(), duration);
@@ -82,11 +90,19 @@ public class ResultPanel extends ToastPanel {
 		this.endTime = time + duration;
 	}
 
+	/**
+	 * 方法重载
+	 * @return
+	 */
 	@Override
 	public long getEndTime() {
 		return endTime;
 	}
 
+	/**
+	 * 方法重载
+	 * @param currentTime 当前时间
+	 */
 	@Override
 	public void onShow(long currentTime) {
 		countDown.setText((endTime - currentTime) / 1000 + "");
@@ -98,6 +114,10 @@ public class ResultPanel extends ToastPanel {
 		});
 	}
 
+	/**
+	 * 绘制游戏结束信息显示
+	 * @param g Graphics，方法重载
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;

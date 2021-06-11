@@ -165,14 +165,6 @@ public class ImageManager {
     }
 
     /**
-     * 获取ip连接图片
-     * @return image
-     */
-    public Image getIpConnectBg() {
-        return getConvexBg();
-    }
-
-    /**
      * 获取计时图片
      * @return image
      */

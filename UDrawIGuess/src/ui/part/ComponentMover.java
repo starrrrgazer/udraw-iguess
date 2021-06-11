@@ -4,7 +4,9 @@ import java.awt.Component;
 import javax.swing.SwingUtilities;
 
 
-
+/**
+ * 头像选择框的移动的线程
+ */
 public class ComponentMover extends Thread {
 
 	private final int deltaTime = 20;
@@ -13,7 +15,11 @@ public class ComponentMover extends Thread {
 	private int targetX;
 	private int targetY;
 	private float velocty = 0.2f;
-	
+
+	/**
+	 * 构造函数
+	 * @param component 需要移动到的目标的逐渐
+	 */
 	public ComponentMover(Component component) {
 		this.setComponent(component);
 	}
@@ -25,7 +31,12 @@ public class ComponentMover extends Thread {
 			this.start();
 		}
 	}
-	
+
+	/**
+	 * 设置目标的位置
+	 * @param targetX 目标的水平位置
+	 * @param targetY 目标的吹自为之
+	 */
 	public void setTarget(int targetX, int targetY) {
 		this.targetX = targetX;
 		this.targetY = targetY;
@@ -40,7 +51,10 @@ public class ComponentMover extends Thread {
 			}
 		});
 	}
-	
+
+	/**
+	 * 线程运行方法
+	 */
 	@Override
 	public void run() {
 		while (true) {

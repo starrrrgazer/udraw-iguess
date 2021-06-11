@@ -100,33 +100,63 @@ public class GamePanel extends FacePanel {
 	}
 
 	/**
-	 *
-	 * @return
+	 * 获取服务端(房间信息)
+	 * @return panel
+	 * @see ServerInfoPanel
 	 */
 	public ServerInfoPanel getInfoPanel() {
 		return infoPanel;
 	}
 
+	/**
+	 * 获取游戏头部信息
+	 * @return panel
+	 * @see HeaderPanel
+	 */
 	public HeaderPanel getHeaderPanel() {
 		return headerPanel;
 	}
 
+	/**
+	 * 获取笔刷信息
+	 * @return panel
+	 * @see BrushConfigPanel
+	 */
 	public BrushConfigPanel getBrushPanel() {
 		return brushPanel;
 	}
 
+	/**
+	 * 获取画板
+	 * @return panel
+	 * @see DrawPanel
+	 */
 	public DrawPanel getDrawPanel() {
 		return drawPanel;
 	}
 
+	/**
+	 * 获取得分
+	 * @return panel
+	 * @see ScorePanel
+	 */
 	public ScorePanel getScorePanel() {
 		return scorePanel;
 	}
 
+	/**
+	 * 获取聊天框
+	 * @return panel
+	 * @see ChatPanel
+	 */
 	public ChatPanel getChatPanel() {
 		return chatPanel;
 	}
-	
+
+	/**
+	 * 在游戏开始前倒计时
+	 * @param time 倒计时时间
+	 */
 	public void countDownBeforeDraw(int time) {
 		countDown.setText(time + "");
 		if (time > 0) {
@@ -135,7 +165,10 @@ public class GamePanel extends FacePanel {
 			countDown.setVisible(false);
 		}
 	}
-	
+
+	/**
+	 * 游戏界面的退出方法
+	 */
 	public void quit() {
 		gamePlaying(false);
 		if (Config.serving) {

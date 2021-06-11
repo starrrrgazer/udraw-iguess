@@ -16,6 +16,10 @@ import java.awt.RenderingHints;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
+/**
+ * 玩家说话显示
+ * @see ToastPanel
+ */
 public class SpeakingPanel extends ToastPanel {
 	
 	private int width = 90;
@@ -30,7 +34,13 @@ public class SpeakingPanel extends ToastPanel {
 	
 	private Font addScoreFont = FontManager.getDefaultFontManager().getAddScoreFont();
 	private Image img = ImageManager.getDefaultImageManager().getSpeakingBg();
-	
+
+	/**
+	 * 构造函数
+	 * @param speaking 说话内容
+	 * @param isAddScore 是否是加分的说话内容，true是
+	 * @param duration 显示时长
+	 */
 	public SpeakingPanel(String speaking, boolean isAddScore, int duration) {
 		
 		setTime(System.currentTimeMillis(), duration);
@@ -56,7 +66,11 @@ public class SpeakingPanel extends ToastPanel {
 	private void setTime(long time, int duration) {
 		this.endTime = time + duration;
 	}
-	
+
+	/**
+	 * 设置和组件的相对位置
+	 * @param component 组件
+	 */
 	@Override
 	public void setLocationRelativeTo(Component component) {
 		int x = component.getWidth() - this.getWidth() >> 1;
@@ -65,6 +79,10 @@ public class SpeakingPanel extends ToastPanel {
 		this.setLocation(loaction);
 	}
 
+	/**
+	 * 获取结束时间
+	 * @return 结束时间
+	 */
 	@Override
 	public long getEndTime() {
 		return endTime;
@@ -72,7 +90,11 @@ public class SpeakingPanel extends ToastPanel {
 
 	@Override
 	public void onShow(long currentTime) {}
-	
+
+	/**
+	 * 绘制说话的图像
+	 * @param g Graphics，方法重载
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;

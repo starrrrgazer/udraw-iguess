@@ -7,6 +7,13 @@ import java.awt.Container;
 
 import javax.swing.SwingUtilities;
 
+/**
+ * 动画的线程
+ * @see TopicPanel
+ * @see SpeakingPanel
+ * @see ResultPanel
+ * @see NoticePanel
+ */
 public class Toast extends Thread {
 	
 	private static Toast toast = new Toast();
@@ -15,7 +22,11 @@ public class Toast extends Thread {
 	
 	private Container container;
 	private ToastPanel[] addScorePanel = new ToastPanel[5];
-	
+
+	/**
+	 * 获取toast的单例模式
+	 * @return toast
+	 */
 	public static Toast getDefaultToast() {
 		return toast;
 	}
@@ -24,7 +35,12 @@ public class Toast extends Thread {
 		container = MainFrame.getMainFrame().getToastPanel();
 		this.start();
 	}
-	
+
+	/**
+	 * 显示“提示信息”
+	 * @param message 提示信息
+	 * @param duration 显示的时长
+	 */
 	public void makeToastNotice(final String message, final int duration) {
 		
 		removeSpecifiedComponents(container, NoticePanel.class, Object.class);
@@ -38,11 +54,22 @@ public class Toast extends Thread {
 			}
 		});
 	}
-	
+
+	/**
+	 * 显示“题目内容”
+	 * @param topic 题目内容
+	 * @param duration 显示时长
+	 * @param centerComponent 组件
+	 */
 	public void makeToastTopic(String topic, int duration, Component centerComponent) {
 		makeRevealPanel(topic, duration, centerComponent);
 	}
-	
+
+	/**
+	 * 显示“猜题结果”
+	 * @param duration 显示时长
+	 * @param centerComponent 组件
+	 */
 	public void makeToastResult(int duration, Component centerComponent) {
 		makeRevealPanel(null, duration, centerComponent);
 	}
@@ -61,11 +88,25 @@ public class Toast extends Thread {
 			}
 		});
 	}
-	
+
+	/**
+	 * 显示“说话内容”
+	 * @param speaking 说话内容
+	 * @param duration 显示时长
+	 * @param centerComponent 组件
+	 * @param index 组件在数组的索引
+	 */
 	public void makeToastSpeaking(String speaking, int duration, Component centerComponent, int index) {
 		makeToastSpeaking(speaking, duration, centerComponent, index, false);
 	}
-	
+
+	/**
+	 * 显示“加分动画”
+	 * @param score 加的分
+	 * @param duration 显示时长
+	 * @param centerComponent 组件
+	 * @param index 组件在数组的索引
+	 */
 	public void makeToastAddScore(int score, int duration, Component centerComponent, int index) {
 		makeToastSpeaking("+" + score, duration, centerComponent, index, true);
 	}
@@ -86,7 +127,10 @@ public class Toast extends Thread {
 			}
 		});
 	}
-	
+
+	/**
+	 * 线程运行方法
+	 */
 	@Override
 	public void run() {
 		while (true) {
@@ -109,7 +153,10 @@ public class Toast extends Thread {
 			}
 		}
 	}
-	
+
+	/**
+	 * 清空toast
+	 */
 	public void makeToastClear() {
 		removeSpecifiedComponents(container, null, NoticePanel.class);
 	}

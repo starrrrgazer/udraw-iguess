@@ -4,7 +4,9 @@ import java.awt.Component;
 
 import javax.swing.SwingUtilities;
 
-
+/**
+ * 切换界面的线程
+ */
 public class ComponentDropper extends Thread {
 	
 	private static ComponentDropper dropper = new ComponentDropper();
@@ -19,7 +21,11 @@ public class ComponentDropper extends Thread {
 	private Component nextComponent;
 	private int offsetStep;
 	private long startTime;
-	
+
+	/**
+	 * 获得componentdropper的单例模式
+	 * @return componentdropp
+	 */
 	public static ComponentDropper getDefaultDropper() {
 		return dropper;
 	}
@@ -27,7 +33,12 @@ public class ComponentDropper extends Thread {
 	private ComponentDropper() {
 		this.start();
 	}
-	
+
+	/**
+	 * 切换页面
+	 * @param prevComponent 之前的页面
+	 * @param nextComponent 将要跳转的页面
+	 */
 	public void switchPanel(Component prevComponent, Component nextComponent) {
 		if (currentComponent == null) {
 			Component tempComponent;
@@ -67,7 +78,10 @@ public class ComponentDropper extends Thread {
 			}
 		});
 	}
-	
+
+	/**
+	 * 线程运行方法
+	 */
 	@Override
 	public void run() {
 		int y;

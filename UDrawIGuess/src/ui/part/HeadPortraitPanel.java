@@ -7,7 +7,10 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
-
+/**
+ * 头像选择
+ * @see HeadPortraitLabel
+ */
 public class HeadPortraitPanel extends JPanel implements MouseListener {
 	
 	private HeadPortraitLabel chosen;
@@ -15,7 +18,10 @@ public class HeadPortraitPanel extends JPanel implements MouseListener {
 	private HeadPortraitLabel[] headPortraits = new HeadPortraitLabel[14];
 	
 	private ComponentMover mover;
-	
+
+	/**
+	 * 构造函数
+	 */
 	public HeadPortraitPanel() {
 		setOpaque(false);
 		setLayout(null);
@@ -47,6 +53,10 @@ public class HeadPortraitPanel extends JPanel implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {}
 
+	/**
+	 * 鼠标按下时，获取选中的头像
+	 * @param e 鼠标事件
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		HeadPortraitLabel label = (HeadPortraitLabel) e.getSource();

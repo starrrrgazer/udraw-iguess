@@ -28,7 +28,10 @@ import ui.mergePanel.MainFrame;
 import ui.part.MyTextField;
 import socket.DataPackage.DataType;
 
-
+/**
+ * 游戏聊天
+ * @see MyScrollPane
+ */
 public class ChatPanel extends JPanel implements ActionListener, MouseListener {
 	private JTextPane chatPane = new JTextPane();
 	private final int headPortraitWidth = 30;
@@ -39,7 +42,10 @@ public class ChatPanel extends JPanel implements ActionListener, MouseListener {
 	private MyButton sendButton = new MyButton("发送");
 	
 	private Font titleFont = FontManager.getDefaultFontManager().getChatTitleFont();
-	
+
+	/**
+	 * 默认构造函数
+	 */
 	public ChatPanel() {
 		
 		chatTitle.setFont(titleFont);
@@ -56,7 +62,14 @@ public class ChatPanel extends JPanel implements ActionListener, MouseListener {
 		chatField.addActionListener(this);
 		sendButton.addMouseListener(this);
 	}
-	
+
+	/**
+	 * 设置位置和大小
+	 * @param x 水平偏移量
+	 * @param y 垂直偏移量
+	 * @param width 宽度
+	 * @param height 高度
+	 */
 	@Override
 	public void setBounds(int x, int y, int width, int height) {
 		super.setBounds(x, y, width, height);
@@ -65,15 +78,28 @@ public class ChatPanel extends JPanel implements ActionListener, MouseListener {
 		chatField.setBounds(5, height - 50, width - 60, 30);
 		sendButton.setBounds(width - 60, height - 50, 50, 30);
 	}
-	
+
+	/**
+	 * 清空聊天框
+	 */
 	public void chatPaneClear() {
 		chatPane.setText("");
 	}
-	
+
+	/**
+	 * 添加系统（服务端）发送的信息
+	 * @param message
+	 */
 	public void appendSystemMessage(String message) {
 		appendContent(message + "\r\n", Font.DIALOG_INPUT, 13, false, false, false, Color.DARK_GRAY);
 	}
-	
+
+	/**
+	 * 添加玩家发送的信息
+	 * @param name 玩家的昵称
+	 * @param headPortrait 玩家的头像
+	 * @param message 玩家的信息
+	 */
 	public void appendMessage(String name, int headPortrait, String message) {
 		insertHeadPortrait(headPortrait);
 		appendContent(" " + name + "：", Font.DIALOG, 13, false, false, false, new Color(100, 0, 20));

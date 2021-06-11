@@ -16,7 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.JViewport;
 import javax.swing.event.MouseInputListener;
 
-
+/**
+ * 聊天框的滚动条
+ */
 public class MyScrollPane extends JPanel implements MouseInputListener, ComponentListener {
 	private final int barWidth = 15;
 	private boolean dragged;
@@ -32,6 +34,10 @@ public class MyScrollPane extends JPanel implements MouseInputListener, Componen
 		};
 	};
 
+	/**
+	 * 构造函数
+	 * @param view
+	 */
 	public MyScrollPane(JComponent view) {
 		this.view = view;
 
@@ -71,10 +77,7 @@ public class MyScrollPane extends JPanel implements MouseInputListener, Componen
 		view.setLocation(0, viewY);
 		return viewY;
 	}
-	
-	public JViewport getViewPort() {
-		return viewPort;
-	}
+
 	
 	private void dragBar(int y) {
 		int barHeight = updateBarHeight();
@@ -82,7 +85,14 @@ public class MyScrollPane extends JPanel implements MouseInputListener, Componen
 		scrollBar.setLocation(getWidth() - 1 - barWidth, barPositionY);
 		updateViewPosition();
 	}
-	
+
+	/**
+	 * 设置滚动条的大小和位置
+	 * @param x 水平偏移量
+	 * @param y 垂直偏移量
+	 * @param width 宽度
+	 * @param height 高度
+	 */
 	@Override
 	public void setBounds(int x, int y, int width, int height) {
 		super.setBounds(x, y, width, height);
@@ -93,6 +103,10 @@ public class MyScrollPane extends JPanel implements MouseInputListener, Componen
 	@Override
 	public void mouseClicked(MouseEvent e) {}
 
+	/**
+	 * 鼠标按下时，拖动滚动条
+	 * @param e 鼠标事件
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (e.getX() >= scrollBar.getX()) {
@@ -101,6 +115,10 @@ public class MyScrollPane extends JPanel implements MouseInputListener, Componen
 		}
 	}
 
+	/**
+	 * 鼠标释放时，取消拖动
+	 * @param e 鼠标事件
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		dragged = false;
@@ -112,6 +130,10 @@ public class MyScrollPane extends JPanel implements MouseInputListener, Componen
 	@Override
 	public void mouseExited(MouseEvent e) {}
 
+	/**
+	 * 鼠标拖动时，拖动滚动条
+	 * @param e 鼠标事件
+	 */
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		if (dragged) {
@@ -122,6 +144,10 @@ public class MyScrollPane extends JPanel implements MouseInputListener, Componen
 	@Override
 	public void mouseMoved(MouseEvent e) {}
 
+	/**
+	 * 组件重置大小
+	 * @param e 组件事件
+	 */
 	@Override
 	public void componentResized(ComponentEvent e) {
 		updateBarBounds();

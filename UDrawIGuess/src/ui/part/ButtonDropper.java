@@ -5,7 +5,10 @@ import java.awt.Component;
 import javax.swing.SwingUtilities;
 
 
-
+/**
+ * 跳转按钮的线程实现
+ * @see ComponentDropper
+ */
 public class ButtonDropper extends Thread {
 	
 	private static ButtonDropper dropper = new ButtonDropper();
@@ -21,7 +24,11 @@ public class ButtonDropper extends Thread {
 
 	private Component prevComponent;
 	private Component nextComponent;
-	
+
+	/**
+	 * 返回dropper的单例模式
+	 * @return buttondropper
+	 */
 	public static ButtonDropper getDefaultDropper() {
 		return dropper;
 	}
@@ -29,7 +36,13 @@ public class ButtonDropper extends Thread {
 	private ButtonDropper() {
 		this.start();
 	}
-	
+
+	/**
+	 * 记录触发事件的按钮，记录现在和将要跳转的组件
+	 * @param component
+	 * @param prevComponent
+	 * @param nextComponent
+	 */
 	public void pressed(Component component, Component prevComponent, Component nextComponent) {
 		if (this.component == null) {
 			startX = component.getX();
@@ -51,7 +64,10 @@ public class ButtonDropper extends Thread {
 			}
 		});
 	}
-	
+
+	/**
+	 * 线程运行方法
+	 */
 	@Override
 	public void run() {
 		int y;

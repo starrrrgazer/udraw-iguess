@@ -16,20 +16,20 @@ import java.util.EventObject;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
-
+/**
+ * 一到题目结束后，题目的答案和猜题情况显示
+ * @see ToastPanel
+ */
 public class TopicPanel extends ToastPanel implements MouseListener {
 	
 	private final int arc = 5;
 	private final int thickness = 6;
 	private final int width = 320;
 	private final int height = 160;
-	private final int bottomHeight = 50;
 	
 	private long endTime;
 
 	private Color mainColor = new Color(230, 180, 115);
-	private Color darkColor = new Color(225, 150, 80);
-	private Color lightColor = new Color(255, 222, 160);
 	
 	private JLabel guessedConut = new JLabel();
 	private JLabel countDownLabel = new JLabel();
@@ -41,6 +41,11 @@ public class TopicPanel extends ToastPanel implements MouseListener {
 	private Font toastTopicPanelFont = fontManager.getToastTopicPanelFont();
 	private Font toastShowTopicFont = fontManager.getToastShowTopicFont();
 
+	/**
+	 * 构造函数
+	 * @param topic
+	 * @param duration
+	 */
 	public TopicPanel(String topic, int duration) {
 		initContent(topic);
 		initBounds();
@@ -99,11 +104,19 @@ public class TopicPanel extends ToastPanel implements MouseListener {
 		this.endTime = time + duration;
 	}
 
+	/**
+	 * 获取结束时间
+	 * @return 结束时间
+	 */
 	@Override
 	public long getEndTime() {
 		return endTime;
 	}
 
+	/**
+	 * 根据当前时间和结束时间计算显示时间
+	 * @param time 当前时间
+	 */
 	@Override
 	public void onShow(long time) {
 		countDown.setText((endTime - time) / 1000 + "");
@@ -115,6 +128,10 @@ public class TopicPanel extends ToastPanel implements MouseListener {
 		});
 	}
 
+	/**
+	 * 绘制图像
+	 * @param g
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
@@ -133,7 +150,11 @@ public class TopicPanel extends ToastPanel implements MouseListener {
 	public void buttonPressed(EventObject e) {
 
 	}
-	
+
+	/**
+	 * 监听鼠标点击事件
+	 * @param e 鼠标事件
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		buttonPressed(e);

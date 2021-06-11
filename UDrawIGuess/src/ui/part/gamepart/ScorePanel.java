@@ -12,7 +12,10 @@ import javax.swing.JPanel;
 public class ScorePanel extends JPanel {
 	
 	private ScoreLabel[] labels = new ScoreLabel[5];
-	
+
+	/**
+	 * 构造函数
+	 */
 	public ScorePanel() {
 		for (int i = 0; i < labels.length; i++) {
 			labels[i] = new ScoreLabel();
@@ -24,7 +27,12 @@ public class ScorePanel extends JPanel {
 		setLayout(null);
 		setOpaque(false);
 	}
-	
+
+	/**
+	 * 设置绘画人的信息
+	 * @param painter clientinfo
+	 * @see ClientInfo
+	 */
 	public void setPainter(ClientInfo painter) {
 		for (ScoreLabel label : labels) {
 			if (painter != null && painter.getProgressId().equals(label.getProgressId())) {
@@ -41,7 +49,11 @@ public class ScorePanel extends JPanel {
 			label.guessed(false);
 		}
 	}
-	
+
+	/**
+	 * 初始化得分
+	 * @param value 分值
+	 */
 	public void initScore(String value) {
 		for (ScoreLabel label : labels) {
 			if (label.isVisible()) {
@@ -49,15 +61,29 @@ public class ScorePanel extends JPanel {
 			}
 		}
 	}
-	
+
+	/**
+	 * 得分加分显示
+	 * @param speaking 加分内容
+	 * @param index 得分label的索引
+	 */
 	public void speaking(String speaking, int index) {
 		Toast.getDefaultToast().makeToastSpeaking(speaking, 1000, labels[index], index);
 	}
-	
+
+	/**
+	 * 得分加分
+	 * @param score 分值
+	 * @param index label的索引
+	 */
 	public void addScore(int score, int index) {
 		Toast.getDefaultToast().makeToastAddScore(score, 1000, labels[index], index);
 	}
-	
+
+	/**
+	 * 根据各个玩家的猜测结果进行加分
+	 * @param list 玩家的猜的结果列表
+	 */
 	public void guessed(ArrayList<Integer> list) {
 		if (list.size() > 0) {
 			labels[list.get(2)].guessed(true);
@@ -67,7 +93,11 @@ public class ScorePanel extends JPanel {
 			addScore(list.get(3), list.get(2));
 		}
 	}
-	
+
+	/**
+	 * 更新玩家
+	 * @param clientInfos 玩家们的信息列表
+	 */
 	public void updatePlayers(ArrayList<ClientInfo> clientInfos) {
 		for (int i = 0; i < clientInfos.size(); i++) {
 			ClientInfo clientInfo = clientInfos.get(i);
@@ -81,11 +111,19 @@ public class ScorePanel extends JPanel {
 			labels[i].setVisible(false);
 		}
 	}
-	
+
+	/**
+	 * 玩家断开连接的处理函数
+	 * @param i
+	 */
 	public void lostConnection(int i) {
 		labels[i].lostConnection();
 	}
-	
+
+	/**
+	 * 获取猜对的数量
+	 * @return ing，猜对的数量
+	 */
 	public int getGuessedCount() {
 		int i = 0;
 		for (ScoreLabel label : labels) {
@@ -95,7 +133,11 @@ public class ScorePanel extends JPanel {
 		}
 		return i;
 	}
-	
+
+	/**
+	 * 获取玩家得分label列表
+	 * @return 玩家得分的label列表
+	 */
 	public ArrayList<ScoreLabel> getUsersScore() {
 		ArrayList<ScoreLabel> list = new ArrayList<ScoreLabel>();
 		for (ScoreLabel label : labels) {
