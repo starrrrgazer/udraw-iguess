@@ -103,7 +103,7 @@ public class FontManager {
      * @return Font
      */
     public Font getHeaderNoticeFont() {
-        return new Font("Ώ¬Με", Font.PLAIN, 8);
+        return new Font("Ώ¬Με", Font.PLAIN, 9);
     }
 
     /**

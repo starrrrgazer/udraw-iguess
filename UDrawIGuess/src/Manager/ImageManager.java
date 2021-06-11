@@ -160,10 +160,6 @@ public class ImageManager {
         return FileControl.getImage("background/board_bg3.jpg");
     }
 
-    private Image getConvexCircleBg() {
-        return FileControl.getImage("background/convex_circle_bg.png");
-    }
-
     private Image getConcaveCircleBg() {
         return FileControl.getImage("background/concave_circle_bg.png");
     }

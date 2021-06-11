@@ -98,7 +98,7 @@ public class ScoreLabel extends JPanel {
 	}
 	
 	public int getScore() {
-		return Integer.parseInt(scoreLabel.getText());
+		return Integer.parseInt(scoreLabel.getText().substring(3));
 	}
 	
 	public String getProgressId() {

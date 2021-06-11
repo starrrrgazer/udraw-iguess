@@ -28,12 +28,10 @@ import javax.swing.JPanel;
 public class IpConnectPanel extends FacePanel {
 	
 	private JPanel panel = new JPanel() {
-		private Image img = ImageManager.getDefaultImageManager().getIpConnectBg();
 		@Override
 		protected void paintComponent(Graphics g) {
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-			g2d.drawImage(img, 0, 0, getWidth(), getHeight(), this);
 		}
 	};
 	private JLabel IPLabel = new JLabel("·þÎñÆ÷IP£º");
