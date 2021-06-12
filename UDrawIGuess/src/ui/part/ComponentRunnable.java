@@ -2,9 +2,6 @@ package ui.part;
 
 import java.awt.Component;
 
-/**
- *
- */
 public abstract class ComponentRunnable implements Runnable {
 	/**
 	 * 设置的组件

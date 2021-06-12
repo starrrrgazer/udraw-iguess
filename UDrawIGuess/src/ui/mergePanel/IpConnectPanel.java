@@ -24,6 +24,7 @@ import javax.swing.JPanel;
 
 /**
  * ip连接页面，可以连接已经开启服务端的主机的ip和端口
+ * @see MyTextField
  */
 public class IpConnectPanel extends FacePanel {
 	
