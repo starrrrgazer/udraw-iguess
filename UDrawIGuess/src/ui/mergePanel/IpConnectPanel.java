@@ -94,11 +94,11 @@ public class IpConnectPanel extends FacePanel {
 				return;
 			} else if (!port.matches("\\d{1,5}") || Integer.parseInt(port) >= 2 << 16) {
 				Toast.getDefaultToast().makeToastNotice("端口格式错误，应取小于65536的整数。", 1000);
-				return;
-			} else if ("127.0.0.1".equals(ip)) {
-				Toast.getDefaultToast().makeToastNotice("不能连接本地主机，请输入其他主机的IP。", 1000);
-				return;
-			}
+				return;}
+//			} else if ("127.0.0.1".equals(ip)) {
+//				Toast.getDefaultToast().makeToastNotice("不能连接本地主机，请输入其他主机的IP。", 1000);
+//				return;
+//			}
 			Config.ip = ip;
 			Config.port = Integer.parseInt(port);
 			new ClientAction().start();

@@ -1,9 +1,10 @@
 <component name="ArtifactManager">
-  <artifact name="UDrawIGuess:jar">
+  <artifact type="jar" name="UDrawIGuess:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/UDrawIGuess_jar</output-path>
-    <root id="root">
-      <element id="archive" name="UDrawIGuess.jar">
-        <element id="module-output" name="UDrawIGuess" />
+    <root id="archive" name="UDrawIGuess.jar">
+      <element id="module-output" name="UDrawIGuess" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/resource/META-INF/MANIFEST.MF" />
       </element>
     </root>
   </artifact>
